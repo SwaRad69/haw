@@ -21,6 +21,7 @@ export default function TechPage() {
 function TechStackSection() {
   const techItems = [
     { name: "AWS", logo: "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" },
+    { name: "FastAPI", logo: "https://www.vectorlogo.zone/logos/python/python-icon.svg" },
     { name: "Next.js", logo: "https://www.vectorlogo.zone/logos/nextjs/nextjs-icon.svg" },
     { name: "Tailwind CSS", logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
     { name: "PySpark", logo: "https://www.vectorlogo.zone/logos/apache_spark/apache_spark-icon.svg" },
@@ -190,25 +191,12 @@ function TeamSection() {
             key={i}
             className="glass p-8 rounded-2xl border border-white/5 group h-full flex flex-col items-center text-center transition-all duration-300 hover:border-primary/50"
           >
-            <div className="w-16 h-16 bg-primary/20 rounded-full mb-6 flex items-center justify-center text-primary group-hover:text-accent group-hover:bg-accent/20 transition-all">
-              <div className="w-10 h-10 rounded-full border-2 border-current border-dashed animate-spin-slow" />
-            </div>
             <h3 className="font-headline text-xl text-primary font-bold">
               {name}
             </h3>
           </div>
         ))}
       </div>
-      
-      <style jsx>{`
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 10s linear infinite;
-        }
-      `}</style>
     </section>
   )
 }
