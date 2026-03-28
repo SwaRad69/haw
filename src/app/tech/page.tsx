@@ -21,7 +21,6 @@ export default function TechPage() {
 function TechStackSection() {
   const techItems = [
     { name: "AWS", logo: "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" },
-    { name: "FastAPI", logo: "https://www.vectorlogo.zone/logos/python/python-icon.svg" },
     { name: "Next.js", logo: "https://www.vectorlogo.zone/logos/nextjs/nextjs-icon.svg" },
     { name: "Tailwind CSS", logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
     { name: "PySpark", logo: "https://www.vectorlogo.zone/logos/apache_spark/apache_spark-icon.svg" },
@@ -77,7 +76,7 @@ function ArchitectureSection() {
   return (
     <section className="py-32 px-4 max-w-7xl mx-auto w-full">
       <div className="flex justify-center mb-20">
-        <TypewriterText text="HOW IT WORKS" className="font-headline text-4xl md:text-6xl text-primary uppercase" />
+        <h2 className="font-headline text-4xl md:text-6xl text-primary uppercase text-center">HOW IT WORKS</h2>
       </div>
 
       <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 relative">
