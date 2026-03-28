@@ -94,7 +94,7 @@ function ProblemSection() {
         PROBLEM STATEMENT
       </motion.h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-12">
         {problems.map((p, i) => (
           <motion.div
             key={i}
@@ -234,15 +234,32 @@ function FeaturesSection() {
         FEATURES
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-12">
         {features.map((f, i) => (
           <motion.div
             key={i}
-            whileHover={{ y: -10, boxShadow: "0 0 30px rgba(118, 185, 0, 0.2)" }}
-            className={`glass p-12 rounded-3xl ${f.size} border-t-2 border-t-accent/30 relative overflow-hidden`}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.2 }}
+            className={`relative ${f.size}`}
           >
-            <TypewriterText text={f.title} className="font-headline text-3xl text-white mb-4 uppercase" delay={i * 0.5} />
-            <p className="text-white/60 text-lg">{f.desc}</p>
+            {/* Hanging String Visual */}
+            <div className="absolute top-[-48px] left-1/2 -translate-x-1/2 w-px h-[48px] bg-gradient-to-b from-primary/0 to-primary/40" />
+
+            <motion.div
+              animate={{ rotate: [-1, 1, -1] }}
+              transition={{ 
+                duration: 7 + i, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              style={{ originY: -0.1 }}
+              whileHover={{ y: -10, rotate: 0, scale: 1.02, boxShadow: "0 0 30px rgba(118, 185, 0, 0.2)" }}
+              className="glass p-12 rounded-3xl border-t-2 border-t-accent/30 relative overflow-hidden h-full"
+            >
+              <TypewriterText text={f.title} className="font-headline text-3xl text-white mb-4 uppercase" delay={i * 0.5} />
+              <p className="text-white/60 text-lg">{f.desc}</p>
+            </motion.div>
           </motion.div>
         ))}
       </div>

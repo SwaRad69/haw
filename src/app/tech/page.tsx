@@ -1,3 +1,4 @@
+
 "use client"
 
 import { motion } from "framer-motion"
@@ -168,18 +169,32 @@ function TeamSection() {
     <section className="py-32 px-4 max-w-7xl mx-auto w-full">
       <h2 className="font-headline text-4xl text-white mb-20 uppercase tracking-tighter">MEET THE SQUAD</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-12">
         {team.map((member, i) => (
           <motion.div
             key={i}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(117, 255, 0, 0.15)" }}
-            className="glass p-8 rounded-2xl border border-white/5 group"
+            className="relative"
           >
-            <div className="w-16 h-16 bg-primary/20 rounded-full mb-6 flex items-center justify-center text-primary group-hover:text-accent group-hover:bg-accent/20 transition-all">
-              <div className="w-10 h-10 rounded-full border-2 border-current border-dashed animate-spin-slow" />
-            </div>
-            <h4 className="font-headline text-xl text-white mb-2">{member.name}</h4>
-            <p className="text-primary text-xs uppercase tracking-widest">{member.role}</p>
+            {/* Hanging String Visual */}
+            <div className="absolute top-[-48px] left-1/2 -translate-x-1/2 w-px h-[48px] bg-gradient-to-b from-primary/0 to-primary/40" />
+
+            <motion.div
+              animate={{ rotate: [-1.5, 1.5, -1.5] }}
+              transition={{ 
+                duration: 5.5 + i, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              style={{ originY: -0.1 }}
+              whileHover={{ scale: 1.05, rotate: 0, boxShadow: "0 0 40px rgba(117, 255, 0, 0.15)" }}
+              className="glass p-8 rounded-2xl border border-white/5 group h-full"
+            >
+              <div className="w-16 h-16 bg-primary/20 rounded-full mb-6 flex items-center justify-center text-primary group-hover:text-accent group-hover:bg-accent/20 transition-all">
+                <div className="w-10 h-10 rounded-full border-2 border-current border-dashed animate-spin-slow" />
+              </div>
+              <h4 className="font-headline text-xl text-white mb-2">{member.name}</h4>
+              <p className="text-primary text-xs uppercase tracking-widest">{member.role}</p>
+            </motion.div>
           </motion.div>
         ))}
       </div>
