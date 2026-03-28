@@ -75,7 +75,7 @@ function ProblemSection() {
     },
     {
       title: "CONSTANTLY EVOLVING REGULATIONS (RBI)",
-      desc: "Humans cannot process the volume and complexity of 200+ daily regulatory changes manually.",
+      desc: "RBI rules change frequently, but systems struggle to adapt in real time. Applying the correct rule at the right time becomes difficult.",
     },
     {
       title: "Zero Intelligence",
