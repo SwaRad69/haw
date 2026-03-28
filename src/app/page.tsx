@@ -1,12 +1,14 @@
+
 "use client"
 
 import { motion } from "framer-motion"
 import { TypewriterText } from "@/components/typewriter-text"
-import { ChevronDown, AlertCircle, Database, Zap, ShieldCheck, Cpu, ArrowRight } from "lucide-react"
+import { ChevronDown, AlertCircle, Database, Zap, ShieldCheck, Cpu } from "lucide-react"
 import { useState } from "react"
 import { queryRegulatoryInsight } from "@/ai/flows/regulatory-insight-query"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { TunnelBackground } from "@/components/ui/tunnel-hero"
 
 export default function HomePage() {
   return (
@@ -24,6 +26,10 @@ export default function HomePage() {
 function HeroSection() {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <TunnelBackground />
+      </div>
+      
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -31,7 +37,7 @@ function HeroSection() {
         className="relative z-10"
       >
         <h1 
-          className="glitch font-headline text-5xl md:text-8xl font-black text-white uppercase tracking-widest leading-none mb-6 whitespace-nowrap"
+          className="glitch font-headline text-5xl md:text-7xl font-black text-white uppercase tracking-widest leading-none mb-6 whitespace-nowrap"
           data-text="HACK 'A' WAR"
         >
           HACK 'A' WAR
