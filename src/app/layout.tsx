@@ -1,7 +1,6 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Background } from '@/components/background';
-import { CustomCursor } from '@/components/custom-cursor';
 import { Navbar } from '@/components/navbar';
 
 export const metadata: Metadata = {
@@ -23,7 +22,6 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased bg-black text-white relative">
         <Background />
-        <CustomCursor />
         <Navbar />
         <main className="relative z-10">
           {children}
