@@ -212,7 +212,7 @@ function FinalLineSection() {
         <p className="text-accent font-headline text-lg md:text-xl tracking-[0.5em] uppercase mb-8 opacity-50">Conclusion</p>
         <div className="max-w-5xl mx-auto">
           <TypewriterText 
-            text="Transforming compliance into intelligence."
+            text="HEAPYFYING THE COMPILIANCE INTO INTELLIGENCE"
             className="font-headline text-4xl md:text-7xl text-primary uppercase tracking-tighter leading-tight"
           />
         </div>
