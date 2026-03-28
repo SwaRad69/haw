@@ -26,7 +26,7 @@ function TechStackSection() {
     { name: "PySpark", logo: "https://www.vectorlogo.zone/logos/apache_spark/apache_spark-icon.svg" },
     { name: "Pandas", logo: "https://www.vectorlogo.zone/logos/pandaspy/pandaspy-icon.svg" },
     { name: "MLflow", logo: "https://www.vectorlogo.zone/logos/mlflow/mlflow-icon.svg" },
-    { name: "Tesseract", logo: "https://picsum.photos/seed/ocr/100/100" },
+    { name: "Tesseract", logo: "https://raw.githubusercontent.com/tesseract-ocr/tesseract/main/docs/tesseract_logo.png" },
     { name: "Twilio", logo: "https://www.vectorlogo.zone/logos/twilio/twilio-icon.svg" }
   ]
 
@@ -85,7 +85,7 @@ function ArchitectureSection() {
           <div key={i} className="flex flex-col md:flex-row items-center gap-4 md:gap-12 w-full md:w-auto">
             <motion.div
               animate={{ 
-                y: [-35, 35, -35],
+                y: [-45, 45, -45],
               }}
               transition={{ 
                 duration: 5, 
@@ -127,7 +127,7 @@ function ImpactSection() {
     { 
       title: "REAL-TIME & ADAPTIVE DECISION MAKING", 
       desc: "Applies the right RBI rule at the right time using the temporal engine. Adapts instantly to new regulations and changing data.",
-      accent: "border-b-accent"
+      accent: "border-b-primary"
     },
     { 
       title: "EXPLAINABLE & TRUSTED COMPLIANCE", 
@@ -179,7 +179,9 @@ function TeamSection() {
 
   return (
     <section className="py-32 px-4 max-w-7xl mx-auto w-full flex flex-col items-center">
-      <h2 className="font-headline text-4xl text-white mb-20 uppercase tracking-tighter text-center">MEET THE SQUAD</h2>
+      <div className="text-center mb-20">
+        <h2 className="font-headline text-4xl text-white uppercase tracking-tighter">MEET THE SQUAD</h2>
+      </div>
       
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-12 w-full">
         {team.map((name, i) => (
@@ -189,7 +191,7 @@ function TeamSection() {
           >
             <motion.div
               animate={{ 
-                y: [-35, 35, -35],
+                y: [-45, 45, -45],
               }}
               transition={{ 
                 duration: 5.5, 

@@ -104,7 +104,7 @@ function ProblemSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [-35, 35, -35] }}
+              animate={{ y: [-45, 45, -45] }}
               transition={{ 
                 duration: 5 + i, 
                 repeat: Infinity, 
@@ -159,7 +159,7 @@ function WhySection() {
               className="relative"
             >
               <motion.div
-                animate={{ y: [-40, 40, -40] }}
+                animate={{ y: [-45, 45, -45] }}
                 transition={{ 
                   duration: 6 + i, 
                   repeat: Infinity, 
@@ -184,27 +184,27 @@ function SolutionSection() {
     { 
       title: "PHASE 1 — DATA INGESTION & PREPARATION", 
       desc: "User uploads KYC documents and transaction data, while external sources (RBI, sanctions lists) are fetched. Data is validated, processed, and stored in the central data platform.",
-      color: "text-blue-400"
+      color: "text-primary"
     },
     { 
       title: "PHASE 2 — REGULATORY INTELLIGENCE (RAG PIPELINE)", 
       desc: "RBI rules are scraped, filtered, chunked, and converted into embeddings. Both static documents and live updates are indexed for real-time retrieval.",
-      color: "text-purple-400"
+      color: "text-primary"
     },
     { 
       title: "PHASE 3 — AGENTIC AI ANALYSIS", 
       desc: "Multiple AI agents process the data: Document understanding, Rule retrieval, Transaction analysis, Sanctions matching, and Time-based rule application. All insights are combined through the decision engine.",
-      color: "text-green-400"
+      color: "text-primary"
     },
     { 
       title: "PHASE 4 — EXPLAINABLE DECISION & ACTION", 
       desc: "System generates a decision (Approved / Rejected / Review) with clear reasoning, RBI clause references, and flags. Actions like alerts, reports, and notifications are triggered.",
-      color: "text-yellow-400"
+      color: "text-primary"
     },
     { 
       title: "PHASE 5 — CONTINUOUS COMPLIANCE LOOP (CORE)", 
       desc: "All decisions are logged and tracked. Feedback, rule updates, and model improvements continuously refine the system, ensuring it stays accurate and up-to-date.",
-      color: "text-orange-400"
+      color: "text-primary"
     }
   ]
 
@@ -238,17 +238,17 @@ function FeaturesSection() {
     { 
       title: "AGENTIC AI-DRIVEN ANALYSIS", 
       desc: "Multi-agent system processes documents, transactions, sanctions, and rules in parallel. Ensures intelligent, modular, and scalable compliance analysis.",
-      color: "border-t-purple-500/30"
+      color: "border-t-primary/30"
     },
     { 
       title: "REAL-TIME REGULATORY INTELLIGENCE", 
       desc: "Hybrid RAG pipeline dynamically fetches and applies RBI rules. Temporal engine ensures the right rule is applied at the right time.",
-      color: "border-t-green-500/30"
+      color: "border-t-primary/30"
     },
     { 
       title: "EXPLAINABLE & ACTIONABLE OUTPUTS", 
       desc: "Generates clear decisions with reasons, RBI clauses, and flags. Triggers real-world actions like alerts, reports, and notifications.",
-      color: "border-t-blue-500/30"
+      color: "border-t-primary/30"
     },
   ]
 
