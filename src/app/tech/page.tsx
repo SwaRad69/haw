@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { TypewriterText } from "@/components/typewriter-text"
-import { Server, Globe, Cpu, Layout, Cloud, ArrowRight, Shield, Zap, TrendingUp } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 export default function TechPage() {
   return (
@@ -30,9 +30,6 @@ function TechStackSection() {
         <div className="flex w-[200%] gap-20 animate-marquee">
           {[...logos, ...logos].map((logo, i) => (
             <div key={i} className="flex items-center gap-4 text-white/30 hover:text-white/100 transition-colors duration-300">
-              <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center">
-                <Cloud size={24} />
-              </div>
               <span className="font-headline text-3xl font-bold uppercase tracking-widest">{logo}</span>
             </div>
           ))}
@@ -54,11 +51,11 @@ function TechStackSection() {
 
 function ArchitectureSection() {
   const flow = [
-    { name: "User", icon: <Globe /> },
-    { name: "API Layer", icon: <Layout /> },
-    { name: "AI Engine", icon: <Cpu /> },
-    { name: "Risk Engine", icon: <Shield /> },
-    { name: "Dashboard", icon: <Layout /> },
+    { name: "User" },
+    { name: "API Layer" },
+    { name: "AI Engine" },
+    { name: "Risk Engine" },
+    { name: "Dashboard" },
   ]
 
   return (
@@ -74,9 +71,6 @@ function ArchitectureSection() {
               transition={{ delay: i * 0.1 }}
               className="glass w-full md:w-48 h-32 rounded-2xl flex flex-col items-center justify-center gap-3 border border-primary/20 group hover:border-accent transition-colors"
             >
-              <div className="text-primary group-hover:text-accent transition-colors">
-                {node.icon}
-              </div>
               <span className="font-headline text-xs uppercase tracking-widest text-white/80">{node.name}</span>
             </motion.div>
             
@@ -98,9 +92,9 @@ function ArchitectureSection() {
 
 function ImpactSection() {
   const impacts = [
-    { title: "Reduce Cost", desc: "Automate 90% of manual regulatory research tasks.", icon: <TrendingUp /> },
-    { title: "Better Decision", desc: "Actionable insights based on multi-source reasoning.", icon: <Zap /> },
-    { title: "Real-time Intelligence", desc: "Stay compliant in a world of daily rule changes.", icon: <Shield /> },
+    { title: "Reduce Cost", desc: "Automate 90% of manual regulatory research tasks." },
+    { title: "Better Decision", desc: "Actionable insights based on multi-source reasoning." },
+    { title: "Real-time Intelligence", desc: "Stay compliant in a world of daily rule changes." },
   ]
 
   return (
@@ -114,9 +108,6 @@ function ImpactSection() {
             whileHover={{ rotate: [-1, 1, -1] }}
             className="glass p-12 rounded-[3rem] border-b-4 border-b-accent/50 text-center flex flex-col items-center gap-6"
           >
-            <div className="p-4 bg-primary/10 rounded-full text-accent shadow-[0_0_20px_rgba(118,185,0,0.2)]">
-              {imp.icon}
-            </div>
             <h3 className="font-headline text-2xl text-white uppercase">{imp.title}</h3>
             <p className="text-white/60 leading-relaxed">{imp.desc}</p>
           </motion.div>

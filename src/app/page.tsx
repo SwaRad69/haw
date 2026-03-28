@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { TypewriterText } from "@/components/typewriter-text"
-import { ChevronDown, AlertCircle, Database, Zap, ShieldCheck, Cpu } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 import { TunnelBackground } from "@/components/ui/tunnel-hero"
 
 export default function HomePage() {
@@ -72,17 +72,14 @@ function ProblemSection() {
     {
       title: "INEFFICIENT & FRAGMENTED KYC SYSTEMS",
       desc: "KYC processes are still manual, slow, and error-prone. Handling multi-format and multilingual documents increases complexity and delay",
-      icon: <Database className="text-accent" />
     },
     {
-      title: "Manual Compliance",
+      title: "CONSTANTLY EVOLVING REGULATIONS (RBI)",
       desc: "Humans cannot process the volume and complexity of 200+ daily regulatory changes manually.",
-      icon: <AlertCircle className="text-accent" />
     },
     {
       title: "Zero Intelligence",
       desc: "Static checklists lack the context-aware reasoning needed to identify real risks.",
-      icon: <Zap className="text-accent" />
     }
   ]
 
@@ -116,10 +113,7 @@ function ProblemSection() {
               whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               className="glass p-8 rounded-2xl border-l-4 border-l-primary/50 relative group h-full"
             >
-              <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-100 transition-opacity">
-                {p.icon}
-              </div>
-              <h3 className="font-headline text-xl mb-4 text-primary">{p.title}</h3>
+              <h3 className="font-headline text-xl mb-4 text-primary uppercase">{p.title}</h3>
               <p className="text-white/60 font-body leading-relaxed">{p.desc}</p>
             </motion.div>
           </motion.div>
@@ -201,9 +195,9 @@ function SolutionSection() {
 
 function FeaturesSection() {
   const features = [
-    { title: "Real-time Tracking", desc: "24/7 monitoring of 500+ global sources.", icon: <Cpu />, size: "col-span-1 md:col-span-2" },
-    { title: "Risk Scoring", desc: "ML-driven impact analysis for every update.", icon: <ShieldCheck />, size: "col-span-1" },
-    { title: "Compliance Alerts", desc: "Instant notifications for critical breaches.", icon: <AlertCircle />, size: "col-span-1" },
+    { title: "Real-time Tracking", desc: "24/7 monitoring of 500+ global sources.", size: "col-span-1 md:col-span-2" },
+    { title: "Risk Scoring", desc: "ML-driven impact analysis for every update.", size: "col-span-1" },
+    { title: "Compliance Alerts", desc: "Instant notifications for critical breaches.", size: "col-span-1" },
   ]
 
   return (
@@ -219,9 +213,6 @@ function FeaturesSection() {
             whileHover={{ y: -10, boxShadow: "0 0 30px rgba(118, 185, 0, 0.2)" }}
             className={`glass p-12 rounded-3xl ${f.size} border-t-2 border-t-accent/30 relative overflow-hidden`}
           >
-            <div className="mb-8 p-3 bg-white/5 w-fit rounded-lg text-accent">
-              {f.icon}
-            </div>
             <TypewriterText text={f.title} className="font-headline text-3xl text-white mb-4 uppercase" delay={i * 0.5} />
             <p className="text-white/60 text-lg">{f.desc}</p>
           </motion.div>
