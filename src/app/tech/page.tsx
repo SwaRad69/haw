@@ -173,16 +173,16 @@ function ImpactSection() {
 
 function TeamSection() {
   const team = [
-    "Rohan :)",
-    "Swaroop Hebbar :)",
-    "Krish Sharma :)",
-    "Samarth Sharma :)",
+    { name: "Rohan", title: "CEO & Founder" },
+    { name: "Swaroop Hebbar", title: "CTO" },
+    { name: "Krish Sharma", title: "Lead AI Engineer" },
+    { name: "Samarth Sharma", title: "Product Architect" },
   ]
 
   const [offsets, setOffsets] = useState<{x: number, y: number}[]>([])
 
   useEffect(() => {
-    // Set random offsets after hydration
+    // Set random offsets after hydration for random startup positions
     setOffsets(team.map(() => ({
       x: Math.random() * 200 - 100,
       y: Math.random() * 200 - 100
@@ -196,7 +196,7 @@ function TeamSection() {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-12 w-full">
-        {team.map((name, i) => (
+        {team.map((member, i) => (
           <motion.div
             key={i}
             initial={{ 
@@ -213,9 +213,12 @@ function TeamSection() {
             }}
             className="glass p-8 rounded-2xl border border-white/5 group h-full flex flex-col items-center text-center transition-all duration-300 hover:border-primary/50"
           >
-            <h3 className="font-headline text-xl text-primary font-bold">
-              {name}
+            <h3 className="font-headline text-xl text-primary font-bold mb-2">
+              {member.name}
             </h3>
+            <p className="text-white/50 text-xs font-headline tracking-widest uppercase">
+              {member.title}
+            </p>
           </motion.div>
         ))}
       </div>
