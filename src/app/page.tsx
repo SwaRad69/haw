@@ -247,11 +247,13 @@ function AiDemoSection() {
             onChange={(e) => setQuery(e.target.value)}
             placeholder="e.g. Impact of new EU AI Act on financial institutions in 2026..." 
             className="bg-black/50 border-white/10 h-14 text-white focus:border-primary"
+            suppressHydrationWarning
           />
           <Button 
             onClick={handleTest}
             disabled={loading}
             className="bg-primary hover:bg-accent text-black font-bold h-14 font-headline uppercase"
+            suppressHydrationWarning
           >
             {loading ? "Analysing..." : "Generate Insight"}
           </Button>
