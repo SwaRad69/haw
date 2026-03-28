@@ -1,13 +1,8 @@
-
 "use client"
 
 import { motion } from "framer-motion"
 import { TypewriterText } from "@/components/typewriter-text"
 import { ChevronDown, AlertCircle, Database, Zap, ShieldCheck, Cpu } from "lucide-react"
-import { useState } from "react"
-import { queryRegulatoryInsight } from "@/ai/flows/regulatory-insight-query"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { TunnelBackground } from "@/components/ui/tunnel-hero"
 
 export default function HomePage() {
@@ -18,7 +13,6 @@ export default function HomePage() {
       <WhySection />
       <SolutionSection />
       <FeaturesSection />
-      <AiDemoSection />
     </div>
   )
 }
@@ -218,66 +212,6 @@ function FeaturesSection() {
             <p className="text-white/60 text-lg">{f.desc}</p>
           </motion.div>
         ))}
-      </div>
-    </section>
-  )
-}
-
-function AiDemoSection() {
-  const [query, setQuery] = useState("")
-  const [result, setResult] = useState<string | null>(null)
-  const [loading, setLoading] = useState(false)
-
-  const handleTest = async () => {
-    if (!query) return
-    setLoading(true)
-    try {
-      const res = await queryRegulatoryInsight({ query })
-      setResult(res.insight)
-    } catch (e) {
-      setResult("Error generating insight. Please try again.")
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  return (
-    <section className="py-32 px-4 bg-primary/5">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="font-headline text-4xl text-white mb-8 uppercase">Simulate The Agent</h2>
-        <p className="text-white/60 mb-12">Ask the HACK 'A' WAR agent about any regulatory concern and see the AI insight in action.</p>
-        
-        <div className="glass p-8 rounded-2xl flex flex-col gap-4 border border-white/10">
-          <Input 
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="e.g. Impact of new EU AI Act on financial institutions in 2026..." 
-            className="bg-black/50 border-white/10 h-14 text-white focus:border-primary"
-            suppressHydrationWarning
-          />
-          <Button 
-            onClick={handleTest}
-            disabled={loading}
-            className="bg-primary hover:bg-accent text-black font-bold h-14 font-headline uppercase"
-            suppressHydrationWarning
-          >
-            {loading ? "Analysing..." : "Generate Insight"}
-          </Button>
-
-          {result && (
-            <motion.div 
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }}
-              className="mt-8 text-left p-6 bg-white/5 rounded-xl border border-primary/20"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                <span className="text-xs font-headline uppercase text-accent tracking-widest">Agent Response</span>
-              </div>
-              <p className="text-white/80 font-body leading-relaxed whitespace-pre-wrap">{result}</p>
-            </motion.div>
-          )}
-        </div>
       </div>
     </section>
   )
