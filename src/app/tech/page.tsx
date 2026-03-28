@@ -78,9 +78,15 @@ function ArchitectureSection() {
         {flow.map((node, i) => (
           <div key={i} className="flex flex-col md:flex-row items-center gap-4 md:gap-12 w-full md:w-auto">
             <motion.div
+              animate={{ y: [-30, 30, -30] }}
+              transition={{ 
+                duration: 5 + i, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.1 }}
+              whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
               className="glass w-full md:w-48 h-32 rounded-2xl flex flex-col items-center justify-center gap-3 border border-primary/20 group hover:border-accent transition-colors"
             >
               <span className="font-headline text-xs uppercase tracking-widest text-white/80">{node.name}</span>
@@ -132,7 +138,7 @@ function ImpactSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [-25, 25, -25] }}
+              animate={{ y: [-35, 35, -35] }}
               transition={{ 
                 duration: 6 + i, 
                 repeat: Infinity, 
@@ -153,10 +159,10 @@ function ImpactSection() {
 
 function TeamSection() {
   const team = [
-    { name: "Rohan", role: "Regulatory Intelligence Lead" },
-    { name: "Swaroop Hebbar", role: "AI Systems Architect" },
-    { name: "Krish Sharma", role: "GRC Strategy & Compliance" },
-    { name: "Samarth Sharma", role: "Frontend & AI Integration" },
+    "Rohan",
+    "Swaroop Hebbar",
+    "Krish Sharma",
+    "Samarth Sharma",
   ]
 
   return (
@@ -164,26 +170,25 @@ function TeamSection() {
       <h2 className="font-headline text-4xl text-white mb-20 uppercase tracking-tighter">MEET THE SQUAD</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-12">
-        {team.map((member, i) => (
+        {team.map((name, i) => (
           <motion.div
             key={i}
             className="relative"
           >
             <motion.div
-              animate={{ y: [-25, 25, -25] }}
+              animate={{ y: [-30, 30, -30] }}
               transition={{ 
                 duration: 7 + i, 
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
               whileHover={{ scale: 1.1, y: 0, boxShadow: "0 0 40px rgba(117, 255, 0, 0.15)", transition: { duration: 0.3 } }}
-              className="glass p-8 rounded-2xl border border-white/5 group h-full"
+              className="glass p-8 rounded-2xl border border-white/5 group h-full flex flex-col items-center text-center"
             >
               <div className="w-16 h-16 bg-primary/20 rounded-full mb-6 flex items-center justify-center text-primary group-hover:text-accent group-hover:bg-accent/20 transition-all">
                 <div className="w-10 h-10 rounded-full border-2 border-current border-dashed animate-spin-slow" />
               </div>
-              <h4 className="font-headline text-xl text-white mb-2">{member.name}</h4>
-              <p className="text-primary text-xs uppercase tracking-widest">{member.role}</p>
+              <h4 className="font-headline text-xl text-white">{name}</h4>
             </motion.div>
           </motion.div>
         ))}
