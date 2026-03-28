@@ -25,41 +25,45 @@ function HeroSection() {
       </div>
       
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10"
+        initial={{ opacity: 0, scale: 0.8, rotateX: 20 }}
+        animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="relative z-10 perspective-[1000px]"
       >
         <h1 
-          className="glitch font-headline text-5xl md:text-7xl font-black text-white uppercase tracking-widest leading-none mb-6 whitespace-nowrap"
+          className="glitch font-headline text-5xl md:text-8xl font-black text-white uppercase tracking-[0.2em] leading-none mb-6 whitespace-nowrap"
           data-text="HACK 'A' WAR"
         >
           HACK 'A' WAR
         </h1>
         
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
+          transition={{ delay: 0.8, duration: 1 }}
           className="flex flex-col items-center gap-2"
         >
-          <p className="font-headline text-accent text-lg md:text-2xl tracking-[0.3em] font-medium uppercase">
+          <p className="font-headline text-accent text-lg md:text-2xl tracking-[0.4em] font-medium uppercase neon-glow">
             Team: Heapify
           </p>
-          <div className="h-px w-24 bg-white/20 my-2" />
-          <p className="text-white/60 font-body text-sm md:text-lg tracking-widest uppercase">
-            Track: GRC | Regulatory Intelligence Agent
+          <div className="h-px w-32 bg-primary/40 my-4 shadow-[0_0_10px_#76B900]" />
+          <p className="text-white/70 font-body text-sm md:text-lg tracking-[0.3em] uppercase max-w-lg">
+            GRC | Regulatory Intelligence Agent
           </p>
         </motion.div>
       </motion.div>
 
       <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-primary/40 cursor-pointer"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 15, 0] }}
+        transition={{ delay: 2, duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-primary/60 cursor-pointer"
       >
-        <ChevronDown size={32} />
+        <ChevronDown size={40} />
       </motion.div>
+      
+      {/* Energy distortion overlay */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black via-transparent to-black opacity-60 z-[5]" />
     </section>
   )
 }

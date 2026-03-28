@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as THREE from "three";
@@ -40,14 +39,17 @@ uniform float iTime;
 uniform vec3 iResolution;
 
 #define TAU 6.2831853071795865
-#define TUNNEL_LAYERS 96
-#define RING_POINTS 128
-#define POINT_SIZE 1.8
+#define TUNNEL_LAYERS 120
+#define RING_POINTS 64
+#define POINT_SIZE 2.2
 #define POINT_COLOR_A vec3(0.46, 0.72, 0.0) // Primary Green
 #define POINT_COLOR_B vec3(0.46, 1.0, 0.0)  // Neon Green
-#define SPEED 0.7
+#define SPEED 1.2
 
 float sq(float x){ return x*x; }
+
+// Hash function for randomness
+float hash(float n) { return fract(sin(n) * 43758.5453123); }
 
 vec2 AngRep(vec2 uv, float angle){
   vec2 polar = vec2(atan(uv.y, uv.x), length(uv));
@@ -58,44 +60,75 @@ vec2 AngRep(vec2 uv, float angle){
 float sdCircle(vec2 uv, float r){ return length(uv) - r; }
 
 vec3 MixShape(float sd, vec3 fill, vec3 target){
-  float blend = smoothstep(0.0, 1.0/iResolution.y, sd);
+  float blend = smoothstep(0.0, 1.5/iResolution.y, sd);
   return mix(fill, target, blend);
 }
 
+// More chaotic path for "wormhole" feel
 vec2 TunnelPath(float x){
   vec2 offs = vec2(
-    0.2 * sin(TAU * x * 0.5) + 0.4 * sin(TAU * x * 0.2 + 0.3),
-    0.3 * cos(TAU * x * 0.3) + 0.2 * cos(TAU * x * 0.1)
+    0.4 * sin(TAU * x * 0.4) + 0.3 * sin(TAU * x * 0.7 + 0.5),
+    0.3 * cos(TAU * x * 0.3) + 0.4 * cos(TAU * x * 0.15 + 1.2)
   );
-  offs *= smoothstep(1.0, 4.0, x);
+  // Add some jitter
+  offs += 0.05 * vec2(sin(x * 10.0), cos(x * 11.0));
   return offs;
 }
 
 void main(){
   vec2 res = iResolution.xy / iResolution.y;
   vec2 uv = gl_FragCoord.xy / iResolution.y - res/2.0;
+  
+  // Radial distortion (stretching at edges)
+  float dist = length(uv);
+  uv *= 1.0 - 0.2 * dist;
+
   vec3 color = vec3(0.0);
   float repAngle = TAU / float(RING_POINTS);
-  float pointSize = POINT_SIZE / (2.0 * iResolution.y);
   float camZ = iTime * SPEED;
   vec2 camOffs = TunnelPath(camZ);
 
   for(int i = 1; i <= TUNNEL_LAYERS; i++){
     float pz = 1.0 - (float(i) / float(TUNNEL_LAYERS));
-    pz -= mod(camZ, 4.0 / float(TUNNEL_LAYERS));
-    vec2 offs = TunnelPath(camZ + pz) - camOffs;
-    float ringRad = 0.15 * (1.0 / sq(pz * 0.8 + 0.4));
-    if(abs(length(uv + offs) - ringRad) < pointSize * 1.5){
+    // Cycling logic
+    pz -= mod(camZ * 0.5, 4.0 / float(TUNNEL_LAYERS));
+    
+    vec2 pathPos = TunnelPath(camZ + pz);
+    vec2 offs = pathPos - camOffs;
+    
+    // Perspective sizing
+    float ringRad = 0.12 * (1.0 / (pz * pz * 0.6 + 0.3));
+    
+    // Streak logic: lengthen the "dots" along the trajectory
+    float streakLen = 1.0 + (1.0 - pz) * 5.0;
+    
+    if(abs(length(uv + offs) - ringRad) < 0.05){
       vec2 aruv = AngRep(uv + offs, repAngle);
+      
+      // Rotate points slightly over time for a spiral effect
+      float angleRot = pz * 5.0 + iTime * 0.2;
+      float s = sin(angleRot), c = cos(angleRot);
+      aruv = vec2(aruv.x * c - aruv.y * s, aruv.x * s + aruv.y * c);
+
+      float pointSize = (POINT_SIZE / (2.0 * iResolution.y)) * (1.5 - pz);
       float pdist = sdCircle(aruv - vec2(ringRad, 0), pointSize);
-      vec3 ptColor = (mod(float(i/2), 2.0) == 0.0) ? POINT_COLOR_A : POINT_COLOR_B;
-      float shade = (1.0 - pz);
+      
+      vec3 ptColor = (mod(float(i), 2.0) == 0.0) ? POINT_COLOR_A : POINT_COLOR_B;
+      
+      // Energy flicker
+      ptColor *= 0.8 + 0.4 * hash(float(i) + floor(iTime * 15.0));
+      
+      // Depth fade
+      float shade = pow(1.0 - pz, 2.5);
       color = MixShape(pdist, ptColor * shade, color);
     }
   }
 
-  // Use the brightness of the color to determine alpha for better blending
-  float alpha = max(max(color.r, color.g), color.b);
+  // Central energy core glow
+  float centerGlow = 0.005 / length(uv + TunnelPath(camZ + 0.9) - camOffs);
+  color += POINT_COLOR_B * centerGlow * 0.3;
+
+  float alpha = clamp(max(max(color.r, color.g), color.b) * 1.5, 0.0, 1.0);
   gl_FragColor = vec4(color, alpha);
 }
 `;
@@ -115,11 +148,15 @@ function createThreeForCanvas(canvas: HTMLCanvasElement, width: number, height: 
   if (typeof window === "undefined") return null;
 
   try {
+    // Standard WebGL context check
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (!gl) return null;
+
     const renderer = new THREE.WebGLRenderer({ 
       canvas, 
       antialias: true, 
       alpha: true, 
-      failIfMajorPerformanceCaveat: true,
+      failIfMajorPerformanceCaveat: false,
       powerPreference: "high-performance"
     });
     
@@ -161,7 +198,7 @@ function disposeThree(ctx: ThreeContext) {
   } catch (e) {}
 }
 
-/* ----------------------------- TunnelBackground (Pure Background) ----------------------------- */
+/* ----------------------------- TunnelBackground ----------------------------- */
 
 export function TunnelBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -181,17 +218,13 @@ export function TunnelBackground() {
     time *= 0.001;
     const delta = time - (lastTimeRef.current || time);
     lastTimeRef.current = time;
-    ctxRef.current.material.uniforms.iTime.value += delta * 0.5;
+    ctxRef.current.material.uniforms.iTime.value += delta;
     ctxRef.current.renderer.render(ctxRef.current.scene, ctxRef.current.camera);
   }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || typeof window === "undefined") return;
-
-    // Pre-emptively check for WebGL support
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-    if (!gl) return;
 
     const width = window.innerWidth;
     const height = window.innerHeight;
@@ -237,7 +270,7 @@ export function TunnelBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none opacity-80 z-[-1]"
+      className="fixed inset-0 w-full h-full pointer-events-none opacity-90 z-[-1]"
       id="tunnel-canvas"
     />
   );
