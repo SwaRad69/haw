@@ -71,7 +71,7 @@ function ProblemSection() {
   const problems = [
     {
       title: "INEFFICIENT & FRAGMENTED KYC SYSTEMS",
-      desc: "Financial institutions still rely on manual and semi-automated KYC processes that are slow, inconsistent, and error-prone. Handling multi-format documents (images, PDFs, multilingual data) adds further complexity, leading to delays and operational inefficiencies.",
+      desc: "KYC processes are still manual, slow, and error-prone. Handling multi-format and multilingual documents increases complexity and delay",
       icon: <Database className="text-accent" />
     },
     {
