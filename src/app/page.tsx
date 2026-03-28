@@ -86,13 +86,12 @@ function ProblemSection() {
 
   return (
     <section className="py-32 px-4 max-w-7xl mx-auto">
-      <motion.h2 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        className="font-headline text-4xl md:text-6xl text-white mb-32 tracking-tight text-center"
-      >
-        PROBLEM STATEMENT
-      </motion.h2>
+      <div className="flex justify-center mb-32">
+        <TypewriterText 
+          text="PROBLEM STATEMENT"
+          className="font-headline text-4xl md:text-6xl text-white tracking-tight uppercase"
+        />
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-12">
         {problems.map((p, i) => (
@@ -104,7 +103,7 @@ function ProblemSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [-45, 45, -45] }}
+              animate={{ y: [-30, 30, -30] }}
               transition={{ 
                 duration: 5 + i, 
                 repeat: Infinity, 
@@ -113,8 +112,8 @@ function ProblemSection() {
               whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
               className="glass p-8 rounded-2xl border-l-4 border-l-primary/50 relative group h-full"
             >
-              <h3 className="font-headline text-xl mb-4 text-primary uppercase">{p.title}</h3>
-              <p className="text-white/60 font-body leading-relaxed">{p.desc}</p>
+              <TypewriterText text={p.title} className="font-headline text-xl mb-4 text-primary uppercase" delay={i * 0.3} />
+              <TypewriterText text={p.desc} className="text-white/60 font-body leading-relaxed text-sm" delay={i * 0.3 + 0.5} />
             </motion.div>
           </motion.div>
         ))}
@@ -159,7 +158,7 @@ function WhySection() {
               className="relative"
             >
               <motion.div
-                animate={{ y: [-45, 45, -45] }}
+                animate={{ y: [-40, 40, -40] }}
                 transition={{ 
                   duration: 6 + i, 
                   repeat: Infinity, 
@@ -168,8 +167,8 @@ function WhySection() {
                 whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
                 className="glass p-10 rounded-xl border border-white/5 flex flex-col h-full"
               >
-                <h3 className="font-headline text-2xl text-primary mb-4 uppercase">{item.title}</h3>
-                <p className="text-white/50">{item.text}</p>
+                <TypewriterText text={item.title} className="font-headline text-2xl text-primary mb-4 uppercase" delay={i * 0.4} />
+                <TypewriterText text={item.text} className="text-white/50 text-base" delay={i * 0.4 + 0.6} />
               </motion.div>
             </motion.div>
           ))}
@@ -210,9 +209,12 @@ function SolutionSection() {
 
   return (
     <section className="py-32 px-4 max-w-7xl mx-auto">
-      <h2 className="font-headline text-4xl md:text-6xl text-white mb-20 text-center uppercase tracking-widest">
-        The Solution Flow
-      </h2>
+      <div className="flex justify-center mb-20">
+        <TypewriterText 
+          text="THE SOLUTION FLOW"
+          className="font-headline text-4xl md:text-6xl text-white uppercase tracking-widest"
+        />
+      </div>
 
       <div className="relative border-l-2 border-primary/20 ml-4 md:ml-0 md:pl-0 space-y-24">
         {steps.map((step, i) => (
@@ -224,8 +226,8 @@ function SolutionSection() {
             className="relative pl-12 md:w-2/3 md:mx-auto"
           >
             <div className="absolute left-[-11px] top-0 w-5 h-5 bg-primary rounded-full shadow-[0_0_15px_#76B900]" />
-            <h3 className={cn("font-headline text-2xl md:text-3xl mb-4 uppercase", step.color)}>{step.title}</h3>
-            <p className="text-white/60 text-lg leading-relaxed">{step.desc}</p>
+            <TypewriterText text={step.title} className={cn("font-headline text-2xl md:text-3xl mb-4 uppercase", step.color)} delay={i * 0.5} />
+            <TypewriterText text={step.desc} className="text-white/60 text-lg leading-relaxed" delay={i * 0.5 + 0.4} />
           </motion.div>
         ))}
       </div>
@@ -254,9 +256,12 @@ function FeaturesSection() {
 
   return (
     <section className="py-32 px-4 max-w-7xl mx-auto">
-      <h2 className="font-headline text-4xl md:text-6xl text-white mb-20 text-center uppercase tracking-tighter">
-        FEATURES
-      </h2>
+      <div className="flex justify-center mb-20">
+        <TypewriterText 
+          text="FEATURES"
+          className="font-headline text-4xl md:text-6xl text-white uppercase tracking-tighter"
+        />
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-12">
         {features.map((f, i) => (
@@ -268,7 +273,7 @@ function FeaturesSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [-45, 45, -45] }}
+              animate={{ y: [-50, 50, -50] }}
               transition={{ 
                 duration: 7 + i, 
                 repeat: Infinity, 
@@ -281,7 +286,7 @@ function FeaturesSection() {
               )}
             >
               <TypewriterText text={f.title} className="font-headline text-2xl text-primary mb-4 uppercase" delay={i * 0.5} />
-              <p className="text-white/60 text-lg leading-relaxed">{f.desc}</p>
+              <TypewriterText text={f.desc} className="text-white/60 text-lg leading-relaxed" delay={i * 0.5 + 0.4} />
             </motion.div>
           </motion.div>
         ))}

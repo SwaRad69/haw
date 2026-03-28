@@ -1,4 +1,3 @@
-
 "use client"
 
 import { motion } from "framer-motion"
@@ -21,6 +20,7 @@ export default function TechPage() {
 function TechStackSection() {
   const techItems = [
     { name: "AWS", logo: "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" },
+    { name: "FastAPI", logo: "https://raw.githubusercontent.com/fastapi/fastapi/master/docs/en/docs/img/icon-white.svg" },
     { name: "Next.js", logo: "https://www.vectorlogo.zone/logos/nextjs/nextjs-icon.svg" },
     { name: "Tailwind CSS", logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
     { name: "PySpark", logo: "https://www.vectorlogo.zone/logos/apache_spark/apache_spark-icon.svg" },
@@ -75,7 +75,9 @@ function ArchitectureSection() {
 
   return (
     <section className="py-32 px-4 max-w-7xl mx-auto w-full">
-      <TypewriterText text="HOW IT WORKS" className="font-headline text-4xl md:text-6xl text-white mb-20 text-center uppercase" />
+      <div className="flex justify-center mb-20">
+        <TypewriterText text="HOW IT WORKS" className="font-headline text-4xl md:text-6xl text-white uppercase" />
+      </div>
 
       <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 relative">
         {flow.map((node, i) => (
@@ -95,7 +97,7 @@ function ArchitectureSection() {
               whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
               className="glass w-full md:w-48 h-32 rounded-2xl flex flex-col items-center justify-center gap-3 border border-primary/20 group hover:border-accent transition-colors"
             >
-              <span className="font-headline text-xs uppercase tracking-widest text-primary font-bold">{node.name}</span>
+              <TypewriterText text={node.name} className="font-headline text-xs uppercase tracking-widest text-primary font-bold" delay={i * 0.2 + 0.5} />
             </motion.div>
             
             {i < flow.length - 1 && (
@@ -117,7 +119,7 @@ function ArchitectureSection() {
 function ImpactSection() {
   const impacts = [
     { 
-      title: "CONTINUOUS COMPLIANCE LOOP (CORE IMPACT)", 
+      title: "CONTINUOUS COMPLIANCE LOOP", 
       desc: "System follows a closed loop: Ingest → Analyze → Apply Rules → Decide → Audit → Improve. Ensures the system continuously learns and stays up-to-date with regulations.",
       accent: "border-b-primary"
     },
@@ -135,7 +137,9 @@ function ImpactSection() {
 
   return (
     <section className="py-32 px-4 max-w-7xl mx-auto w-full">
-      <TypewriterText text="IMPACT" className="font-headline text-4xl md:text-6xl text-white mb-20 text-center uppercase" />
+      <div className="flex justify-center mb-20">
+        <TypewriterText text="IMPACT" className="font-headline text-4xl md:text-6xl text-white uppercase" />
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
         {impacts.map((imp, i) => (
@@ -145,7 +149,7 @@ function ImpactSection() {
           >
             <motion.div
               animate={{ 
-                y: [-45, 45, -45],
+                y: [-60, 60, -60],
               }}
               transition={{ 
                 duration: 6, 
@@ -156,8 +160,8 @@ function ImpactSection() {
               whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
               className={`glass p-12 rounded-[3rem] border-b-4 ${imp.accent}/50 text-center flex flex-col items-center gap-6 h-full`}
             >
-              <h3 className="font-headline text-2xl text-primary uppercase font-bold">{imp.title}</h3>
-              <p className="text-white/60 leading-relaxed font-body">{imp.desc}</p>
+              <TypewriterText text={imp.title} className="font-headline text-2xl text-primary uppercase font-bold" delay={i * 0.5} />
+              <TypewriterText text={imp.desc} className="text-white/60 leading-relaxed font-body" delay={i * 0.5 + 0.4} />
             </motion.div>
           </motion.div>
         ))}
@@ -177,7 +181,7 @@ function TeamSection() {
   return (
     <section className="py-32 px-4 max-w-7xl mx-auto w-full flex flex-col items-center">
       <div className="text-center mb-20">
-        <h2 className="font-headline text-4xl text-white uppercase tracking-tighter">MEET THE SQUAD</h2>
+        <TypewriterText text="MEET THE SQUAD" className="font-headline text-4xl text-white uppercase tracking-tighter" />
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-12 w-full">
@@ -188,7 +192,7 @@ function TeamSection() {
           >
             <motion.div
               animate={{ 
-                y: [-45, 45, -45],
+                y: [-40, 40, -40],
               }}
               transition={{ 
                 duration: 5.5, 
@@ -202,7 +206,7 @@ function TeamSection() {
               <div className="w-16 h-16 bg-primary/20 rounded-full mb-6 flex items-center justify-center text-primary group-hover:text-accent group-hover:bg-accent/20 transition-all">
                 <div className="w-10 h-10 rounded-full border-2 border-current border-dashed animate-spin-slow" />
               </div>
-              <h4 className="font-headline text-xl text-primary font-bold">{name}</h4>
+              <TypewriterText text={name} className="font-headline text-xl text-primary font-bold" delay={i * 0.2 + 0.8} />
             </motion.div>
           </motion.div>
         ))}
@@ -230,9 +234,12 @@ function FinalLineSection() {
         transition={{ duration: 1 }}
       >
         <p className="text-accent font-headline text-lg md:text-xl tracking-[0.5em] uppercase mb-8 opacity-50">Conclusion</p>
-        <h2 className="font-headline text-4xl md:text-7xl text-white uppercase tracking-tighter leading-tight max-w-5xl mx-auto">
-          Transforming <span className="text-primary">compliance</span> into <span className="text-accent underline decoration-accent/30 underline-offset-8">intelligence</span>.
-        </h2>
+        <div className="max-w-5xl mx-auto">
+          <TypewriterText 
+            text="Transforming compliance into intelligence."
+            className="font-headline text-4xl md:text-7xl text-white uppercase tracking-tighter leading-tight"
+          />
+        </div>
       </motion.div>
     </section>
   )
