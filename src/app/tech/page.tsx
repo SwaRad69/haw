@@ -37,7 +37,6 @@ function TechStackSection() {
     <section className="min-h-[70vh] flex flex-col items-center justify-center pt-32 px-4 overflow-hidden">
       <div className="text-center mb-20">
         <TypewriterText text="TECH STACK" className="font-headline text-5xl md:text-7xl text-white mb-4 uppercase tracking-tighter" />
-        <p className="font-headline text-primary text-xl tracking-widest">DATA + AI POWERED INFRASTRUCTURE</p>
       </div>
 
       <div className="w-full relative py-12">
