@@ -43,7 +43,7 @@ function HeroSection() {
           transition={{ delay: 0.8, duration: 1 }}
           className="flex flex-col items-center gap-2"
         >
-          <p className="font-headline text-accent text-lg md:text-2xl tracking-[0.4em] font-medium uppercase neon-glow">
+          <p className="font-headline text-accent text-lg md:text-2xl tracking-[0.4em] font-medium uppercase">
             Team: Heapify
           </p>
           <div className="h-px w-32 bg-primary/40 my-4 shadow-[0_0_10px_#76B900]" />
@@ -62,7 +62,6 @@ function HeroSection() {
         <ChevronDown size={40} />
       </motion.div>
       
-      {/* Energy distortion overlay */}
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black via-transparent to-black opacity-60 z-[5]" />
     </section>
   )
