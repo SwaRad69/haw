@@ -43,7 +43,7 @@ function HeroSection() {
           transition={{ delay: 0.8, duration: 1 }}
           className="flex flex-col items-center gap-2"
         >
-          <p className="font-headline text-accent text-lg md:text-2xl tracking-[0.4em] font-medium uppercase">
+          <p className="font-headline text-primary text-lg md:text-2xl tracking-[0.2em] font-medium uppercase">
             Team: Heapify
           </p>
           <div className="h-px w-32 bg-primary/40 my-4 shadow-[0_0_10px_#76B900]" />
@@ -103,14 +103,25 @@ function ProblemSection() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.2 }}
-            whileHover={{ y: -10 }}
-            className="glass p-8 rounded-2xl border-l-4 border-l-primary/50 relative group"
+            className="relative"
           >
-            <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-100 transition-opacity">
-              {p.icon}
-            </div>
-            <h3 className="font-headline text-xl mb-4 text-primary">{p.title}</h3>
-            <p className="text-white/60 font-body leading-relaxed">{p.desc}</p>
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ 
+                duration: 4, 
+                repeat: Infinity, 
+                ease: "easeInOut", 
+                delay: i * 0.6 
+              }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+              className="glass p-8 rounded-2xl border-l-4 border-l-primary/50 relative group h-full"
+            >
+              <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                {p.icon}
+              </div>
+              <h3 className="font-headline text-xl mb-4 text-primary">{p.title}</h3>
+              <p className="text-white/60 font-body leading-relaxed">{p.desc}</p>
+            </motion.div>
           </motion.div>
         ))}
       </div>
