@@ -1,3 +1,4 @@
+
 "use client"
 
 import { motion } from "framer-motion"
@@ -89,7 +90,7 @@ function ProblemSection() {
       <div className="flex justify-center mb-32">
         <TypewriterText 
           text="PROBLEM STATEMENT"
-          className="font-headline text-4xl md:text-6xl text-white tracking-tight uppercase"
+          className="font-headline text-4xl md:text-6xl text-primary tracking-tight uppercase"
         />
       </div>
 
@@ -99,9 +100,9 @@ function ProblemSection() {
             key={i}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            animate={{ y: [-20, 20, -20] }}
+            animate={{ y: [-40, 40, -40] }}
             transition={{ 
-              y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 },
+              y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 },
               opacity: { duration: 0.5, delay: i * 0.2 }
             }}
             className="glass p-8 rounded-2xl border-l-4 border-l-primary/50 relative group h-full"
@@ -139,7 +140,7 @@ function WhySection() {
         <div className="mb-20 text-center">
           <TypewriterText 
             text="WHY IN 2026?"
-            className="font-headline text-4xl md:text-6xl text-white mb-4 tracking-tight"
+            className="font-headline text-4xl md:text-6xl text-primary mb-4 tracking-tight"
           />
         </div>
 
@@ -149,9 +150,9 @@ function WhySection() {
               key={i}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              animate={{ y: [-30, 30, -30] }}
+              animate={{ y: [-40, 40, -40] }}
               transition={{ 
-                y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: i * 0.7 },
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: i * 0.7 },
                 opacity: { duration: 0.5, delay: i * 0.2 }
               }}
               className="glass p-10 rounded-xl border border-white/5 flex flex-col h-full"
@@ -173,27 +174,27 @@ function SolutionSection() {
     { 
       title: "PHASE 1 — DATA INGESTION & PREPARATION", 
       desc: "User uploads KYC documents and transaction data, while external sources (RBI, sanctions lists) are fetched. Data is validated, processed, and stored in the central data platform.",
-      color: "text-primary"
+      color: "text-white"
     },
     { 
       title: "PHASE 2 — REGULATORY INTELLIGENCE (RAG PIPELINE)", 
       desc: "RBI rules are scraped, filtered, chunked, and converted into embeddings. Both static documents and live updates are indexed for real-time retrieval.",
-      color: "text-primary"
+      color: "text-white"
     },
     { 
       title: "PHASE 3 — AGENTIC AI ANALYSIS", 
       desc: "Multiple AI agents process the data: Document understanding, Rule retrieval, Transaction analysis, Sanctions matching, and Time-based rule application. All insights are combined through the decision engine.",
-      color: "text-primary"
+      color: "text-white"
     },
     { 
       title: "PHASE 4 — EXPLAINABLE DECISION & ACTION", 
       desc: "System generates a decision (Approved / Rejected / Review) with clear reasoning, RBI clause references, and flags. Actions like alerts, reports, and notifications are triggered.",
-      color: "text-primary"
+      color: "text-white"
     },
     { 
       title: "PHASE 5 — CONTINUOUS COMPLIANCE LOOP (CORE)", 
       desc: "All decisions are logged and tracked. Feedback, rule updates, and model improvements continuously refine the system, ensuring it stays accurate and up-to-date.",
-      color: "text-primary"
+      color: "text-white"
     }
   ]
 
@@ -202,7 +203,7 @@ function SolutionSection() {
       <div className="flex justify-center mb-20">
         <TypewriterText 
           text="THE SOLUTION FLOW"
-          className="font-headline text-4xl md:text-6xl text-white uppercase tracking-widest"
+          className="font-headline text-4xl md:text-6xl text-primary uppercase tracking-widest"
         />
       </div>
 
@@ -216,7 +217,9 @@ function SolutionSection() {
             className="relative pl-12 md:w-2/3 md:mx-auto"
           >
             <div className="absolute left-[-11px] top-0 w-5 h-5 bg-primary rounded-full shadow-[0_0_15px_#76B900]" />
-            <TypewriterText text={step.title} className={cn("font-headline text-2xl md:text-3xl mb-4 uppercase", step.color)} delay={i * 0.5} />
+            <h3 className={cn("font-headline text-2xl md:text-3xl mb-4 uppercase", step.color)}>
+              {step.title}
+            </h3>
             <p className="text-white/60 text-lg leading-relaxed">
               {step.desc}
             </p>
@@ -251,7 +254,7 @@ function FeaturesSection() {
       <div className="flex justify-center mb-20">
         <TypewriterText 
           text="FEATURES"
-          className="font-headline text-4xl md:text-6xl text-white uppercase tracking-tighter"
+          className="font-headline text-4xl md:text-6xl text-primary uppercase tracking-tighter"
         />
       </div>
 
@@ -261,9 +264,9 @@ function FeaturesSection() {
             key={i}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            animate={{ y: [-40, 40, -40] }}
+            animate={{ y: [-45, 45, -45] }}
             transition={{ 
-              y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: i * 0.8 },
+              y: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.8 },
               opacity: { duration: 0.5, delay: i * 0.2 }
             }}
             className={cn(

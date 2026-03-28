@@ -26,14 +26,13 @@ function TechStackSection() {
     { name: "Tailwind CSS", logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
     { name: "PySpark", logo: "https://www.vectorlogo.zone/logos/apache_spark/apache_spark-icon.svg" },
     { name: "Pandas", logo: "https://raw.githubusercontent.com/pandas-dev/pandas/master/doc/static/pandas.svg" },
-    { name: "Tesseract", logo: "https://raw.githubusercontent.com/tesseract-ocr/tesseract/main/docs/Tesseract_Logo.png" },
     { name: "Twilio", logo: "https://www.vectorlogo.zone/logos/twilio/twilio-icon.svg" }
   ]
 
   return (
     <section className="min-h-[70vh] flex flex-col items-center justify-center pt-32 px-4 overflow-hidden">
       <div className="text-center mb-20">
-        <TypewriterText text="TECH STACK" className="font-headline text-5xl md:text-7xl text-white mb-4 uppercase tracking-tighter" />
+        <TypewriterText text="TECH STACK" className="font-headline text-5xl md:text-7xl text-primary mb-4 uppercase tracking-tighter" />
       </div>
 
       <div className="w-full relative py-12">
@@ -79,7 +78,7 @@ function ArchitectureSection() {
   return (
     <section className="py-32 px-4 max-w-7xl mx-auto w-full">
       <div className="flex justify-center mb-20">
-        <TypewriterText text="HOW IT WORKS" className="font-headline text-4xl md:text-6xl text-white uppercase" />
+        <TypewriterText text="HOW IT WORKS" className="font-headline text-4xl md:text-6xl text-primary uppercase" />
       </div>
 
       <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 relative">
@@ -87,10 +86,10 @@ function ArchitectureSection() {
           <div key={i} className="flex flex-col md:flex-row items-center gap-4 md:gap-12 w-full md:w-auto">
             <motion.div
               animate={{ 
-                y: [-35, 35, -35],
+                y: [-40, 40, -40],
               }}
               transition={{ 
-                duration: 4.5, 
+                duration: 5, 
                 repeat: Infinity, 
                 ease: "easeInOut",
                 delay: i * 0.4
@@ -99,7 +98,7 @@ function ArchitectureSection() {
               whileInView={{ opacity: 1 }}
               className="glass w-full md:w-48 h-32 rounded-2xl flex flex-col items-center justify-center gap-3 border border-primary/20 group hover:border-accent transition-colors"
             >
-              <TypewriterText text={node.name} className="font-headline text-xs uppercase tracking-widest text-primary font-bold" delay={i * 0.2 + 0.5} />
+              <TypewriterText text={node.name} className="font-headline text-sm uppercase tracking-widest text-primary font-bold" delay={i * 0.2 + 0.5} />
             </motion.div>
             
             {i < flow.length - 1 && (
@@ -140,7 +139,7 @@ function ImpactSection() {
   return (
     <section className="py-32 px-4 max-w-7xl mx-auto w-full">
       <div className="flex justify-center mb-20">
-        <TypewriterText text="IMPACT" className="font-headline text-4xl md:text-6xl text-white uppercase" />
+        <TypewriterText text="IMPACT" className="font-headline text-4xl md:text-6xl text-primary uppercase" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
@@ -153,7 +152,7 @@ function ImpactSection() {
               y: [-45, 45, -45],
             }}
             transition={{ 
-              y: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 },
+              y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 },
               opacity: { duration: 0.5, delay: i * 0.2 }
             }}
             className={`glass p-12 rounded-[3rem] border-b-4 ${imp.accent}/50 text-center flex flex-col items-center gap-6 h-full`}
@@ -180,26 +179,20 @@ function TeamSection() {
   return (
     <section className="py-32 px-4 max-w-7xl mx-auto w-full flex flex-col items-center">
       <div className="text-center mb-20">
-        <TypewriterText text="MEET THE SQUAD" className="font-headline text-4xl text-white uppercase tracking-tighter" />
+        <TypewriterText text="MEET THE SQUAD" className="font-headline text-4xl text-primary uppercase tracking-tighter" />
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-12 w-full">
         {team.map((name, i) => (
-          <motion.div
+          <div
             key={i}
-            initial={{ opacity: 0, y: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ 
-              duration: 0.5, 
-              delay: i * 0.2 
-            }}
-            className="glass p-8 rounded-2xl border border-white/5 group h-full flex flex-col items-center text-center"
+            className="glass p-8 rounded-2xl border border-white/5 group h-full flex flex-col items-center text-center transition-all duration-300 hover:border-primary/50"
           >
             <div className="w-16 h-16 bg-primary/20 rounded-full mb-6 flex items-center justify-center text-primary group-hover:text-accent group-hover:bg-accent/20 transition-all">
               <div className="w-10 h-10 rounded-full border-2 border-current border-dashed animate-spin-slow" />
             </div>
             <TypewriterText text={name} className="font-headline text-xl text-primary font-bold" delay={i * 0.2 + 0.8} />
-          </motion.div>
+          </div>
         ))}
       </div>
       
@@ -228,7 +221,7 @@ function FinalLineSection() {
         <div className="max-w-5xl mx-auto">
           <TypewriterText 
             text="Transforming compliance into intelligence."
-            className="font-headline text-4xl md:text-7xl text-white uppercase tracking-tighter leading-tight"
+            className="font-headline text-4xl md:text-7xl text-primary uppercase tracking-tighter leading-tight"
           />
         </div>
       </motion.div>
