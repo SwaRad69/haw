@@ -1,3 +1,4 @@
+
 "use client"
 
 import { motion } from "framer-motion"
@@ -24,6 +25,8 @@ function TechStackSection() {
     { name: "Next.js", logo: "https://www.vectorlogo.zone/logos/nextjs/nextjs-icon.svg" },
     { name: "Tailwind CSS", logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
     { name: "PySpark", logo: "https://www.vectorlogo.zone/logos/apache_spark/apache_spark-icon.svg" },
+    { name: "Pandas", logo: "https://raw.githubusercontent.com/pandas-dev/pandas/master/doc/static/pandas.svg" },
+    { name: "Tesseract", logo: "https://raw.githubusercontent.com/tesseract-ocr/tesseract/main/docs/Tesseract_Logo.png" },
     { name: "Twilio", logo: "https://www.vectorlogo.zone/logos/twilio/twilio-icon.svg" }
   ]
 
@@ -184,14 +187,11 @@ function TeamSection() {
         {team.map((name, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0, y: 0 }}
             whileInView={{ opacity: 1 }}
-            animate={{ 
-              y: [-25, 25, -25],
-            }}
             transition={{ 
-              y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 },
-              opacity: { duration: 0.5, delay: i * 0.2 }
+              duration: 0.5, 
+              delay: i * 0.2 
             }}
             className="glass p-8 rounded-2xl border border-white/5 group h-full flex flex-col items-center text-center"
           >
