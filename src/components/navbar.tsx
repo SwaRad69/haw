@@ -22,11 +22,8 @@ export function Navbar() {
         <NavLink href="/tech" active={pathname === "/tech"}>Tech Stack</NavLink>
       </div>
 
-      <div className="hidden md:block">
-        <button className="bg-primary hover:bg-accent text-black font-bold px-6 py-2 rounded-full transition-all duration-300 font-headline text-xs tracking-widest uppercase shadow-[0_0_15px_rgba(118,185,0,0.4)]">
-          Launch App
-        </button>
-      </div>
+      {/* Spacer to keep links relatively centered when button is removed */}
+      <div className="w-[100px] hidden md:block" />
     </motion.nav>
   )
 }
