@@ -110,9 +110,18 @@ type ThreeContext = {
 };
 
 function createThreeForCanvas(canvas: HTMLCanvasElement, width: number, height: number): ThreeContext | null {
+  if (typeof window === "undefined") return null;
+
   try {
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, failIfMajorPerformanceCaveat: false });
-    const dpr = Math.min(typeof window !== 'undefined' ? window.devicePixelRatio : 1, 2);
+    const renderer = new THREE.WebGLRenderer({ 
+      canvas, 
+      antialias: true, 
+      alpha: true, 
+      failIfMajorPerformanceCaveat: true,
+      powerPreference: "high-performance"
+    });
+    
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     renderer.setPixelRatio(dpr);
     renderer.setSize(width, height);
 
@@ -135,7 +144,7 @@ function createThreeForCanvas(canvas: HTMLCanvasElement, width: number, height: 
 
     return { renderer, scene, camera, material, mesh, geometry };
   } catch (e) {
-    console.warn("WebGL initialization failed:", e);
+    // Fail silently to avoid triggering error overlays in environments without WebGL
     return null;
   }
 }
@@ -177,10 +186,14 @@ export function TunnelBackground() {
     const canvas = canvasRef.current;
     if (!canvas || typeof window === "undefined") return;
 
+    // Pre-emptively check for WebGL support to avoid Three.js constructor errors
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (!gl) return;
+
     const width = window.innerWidth;
     const height = window.innerHeight;
     const ctx = createThreeForCanvas(canvas, width, height);
-    if (!ctx) return; // Gracefully exit if WebGL fails
+    if (!ctx) return; 
     
     ctxRef.current = ctx;
 
