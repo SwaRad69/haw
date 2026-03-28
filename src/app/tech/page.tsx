@@ -17,18 +17,31 @@ export default function TechPage() {
 }
 
 function TechStackSection() {
-  const logos = ["AWS", "OpenAI", "React", "Firebase", "Tailwind", "Python", "LlamaIndex", "Next.js"]
+  const logos = [
+    "AWS", 
+    "FastAPI", 
+    "Next.js", 
+    "Tailwind CSS", 
+    "FAISS / Chroma", 
+    "BGE Embeddings", 
+    "PySpark", 
+    "Pandas", 
+    "MLflow", 
+    "Tesseract / EasyOCR", 
+    "BeautifulSoup / Playwright", 
+    "Twilio"
+  ]
 
   return (
     <section className="min-h-[70vh] flex flex-col items-center justify-center pt-32 px-4 overflow-hidden">
       <div className="text-center mb-20">
         <TypewriterText text="TECH STACK" className="font-headline text-5xl md:text-7xl text-white mb-4 uppercase tracking-tighter" />
-        <p className="font-headline text-primary text-xl tracking-widest">Gen AI + AWS POWERED</p>
+        <p className="font-headline text-primary text-xl tracking-widest">DATA + AI POWERED INFRASTRUCTURE</p>
       </div>
 
       <div className="w-full relative py-12">
-        <div className="flex w-[200%] gap-20 animate-marquee">
-          {[...logos, ...logos].map((logo, i) => (
+        <div className="flex w-max gap-20 animate-marquee whitespace-nowrap">
+          {[...logos, ...logos, ...logos].map((logo, i) => (
             <div key={i} className="flex items-center gap-4 text-white/30 hover:text-white/100 transition-colors duration-300">
               <span className="font-headline text-3xl font-bold uppercase tracking-widest">{logo}</span>
             </div>
@@ -39,10 +52,10 @@ function TechStackSection() {
       <style jsx>{`
         @keyframes marquee {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          100% { transform: translateX(-33.33%); }
         }
         .animate-marquee {
-          animation: marquee 30s linear infinite;
+          animation: marquee 40s linear infinite;
         }
       `}</style>
     </section>
