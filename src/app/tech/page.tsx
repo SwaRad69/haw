@@ -132,9 +132,9 @@ function ImpactSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [-15, 15, -15] }}
+              animate={{ y: [-25, 25, -25] }}
               transition={{ 
-                duration: 5 + i, 
+                duration: 6 + i, 
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
@@ -153,10 +153,10 @@ function ImpactSection() {
 
 function TeamSection() {
   const team = [
-    { name: "John Doe", role: "CEO & Visionary" },
-    { name: "Jane Smith", role: "Co-founder & GRC Lead" },
-    { name: "Mike Ross", role: "Lead AI Engineer" },
-    { name: "Sarah Connor", role: "Frontend Architect" },
+    { name: "Rohan", role: "Regulatory Intelligence Lead" },
+    { name: "Swaroop Hebbar", role: "AI Systems Architect" },
+    { name: "Krish Sharma", role: "GRC Strategy & Compliance" },
+    { name: "Samarth Sharma", role: "Frontend & AI Integration" },
   ]
 
   return (
@@ -170,9 +170,9 @@ function TeamSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [-15, 15, -15] }}
+              animate={{ y: [-25, 25, -25] }}
               transition={{ 
-                duration: 6 + i, 
+                duration: 7 + i, 
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}

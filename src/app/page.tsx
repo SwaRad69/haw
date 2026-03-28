@@ -104,9 +104,9 @@ function ProblemSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [-15, 15, -15] }}
+              animate={{ y: [-25, 25, -25] }}
               transition={{ 
-                duration: 4 + i, 
+                duration: 5 + i, 
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
@@ -141,7 +141,7 @@ function WhySection() {
 
   return (
     <section className="py-32 px-4 bg-white/[0.02]">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto flex flex-col items-center">
         <div className="mb-20 text-center">
           <TypewriterText 
             text="WHY IN 2026?"
@@ -149,7 +149,7 @@ function WhySection() {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-12 w-full">
           {whyItems.map((item, i) => (
             <motion.div
               key={i}
@@ -159,9 +159,9 @@ function WhySection() {
               className="relative"
             >
               <motion.div
-                animate={{ y: [-20, 20, -20] }}
+                animate={{ y: [-25, 25, -25] }}
                 transition={{ 
-                  duration: 5 + i, 
+                  duration: 6 + i, 
                   repeat: Infinity, 
                   ease: "easeInOut" 
                 }}
@@ -182,27 +182,27 @@ function WhySection() {
 function SolutionSection() {
   const steps = [
     { 
-      title: "DATA INGESTION & PREPARATION", 
+      title: "PHASE 1 — DATA INGESTION & PREPARATION", 
       desc: "User uploads KYC documents and transaction data, while external sources (RBI, sanctions lists) are fetched. Data is validated, processed, and stored in the central data platform.",
       color: "text-blue-400"
     },
     { 
-      title: "REGULATORY INTELLIGENCE (RAG PIPELINE)", 
+      title: "PHASE 2 — REGULATORY INTELLIGENCE (RAG PIPELINE)", 
       desc: "RBI rules are scraped, filtered, chunked, and converted into embeddings. Both static documents and live updates are indexed for real-time retrieval.",
       color: "text-purple-400"
     },
     { 
-      title: "AGENTIC AI ANALYSIS", 
+      title: "PHASE 3 — AGENTIC AI ANALYSIS", 
       desc: "Multiple AI agents process the data: Document understanding, Rule retrieval, Transaction analysis, Sanctions matching, and Time-based rule application. All insights are combined through the decision engine.",
       color: "text-green-400"
     },
     { 
-      title: "EXPLAINABLE DECISION & ACTION", 
+      title: "PHASE 4 — EXPLAINABLE DECISION & ACTION", 
       desc: "System generates a decision (Approved / Rejected / Review) with clear reasoning, RBI clause references, and flags. Actions like alerts, reports, and notifications are triggered.",
       color: "text-yellow-400"
     },
     { 
-      title: "CONTINUOUS COMPLIANCE LOOP (CORE)", 
+      title: "PHASE 5 — CONTINUOUS COMPLIANCE LOOP (CORE)", 
       desc: "All decisions are logged and tracked. Feedback, rule updates, and model improvements continuously refine the system, ensuring it stays accurate and up-to-date.",
       color: "text-orange-400"
     }
@@ -224,8 +224,7 @@ function SolutionSection() {
             className="relative pl-12 md:w-2/3 md:mx-auto"
           >
             <div className="absolute left-[-11px] top-0 w-5 h-5 bg-primary rounded-full shadow-[0_0_15px_#76B900]" />
-            <span className={cn("block font-headline text-xs tracking-widest mb-2 uppercase", step.color)}>PHASE 0{i+1}</span>
-            <h3 className="font-headline text-2xl md:text-3xl text-white mb-4 uppercase">{step.title}</h3>
+            <h3 className={cn("font-headline text-2xl md:text-3xl mb-4 uppercase", step.color)}>{step.title}</h3>
             <p className="text-white/60 text-lg leading-relaxed">{step.desc}</p>
           </motion.div>
         ))}
@@ -269,9 +268,9 @@ function FeaturesSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [-15, 15, -15] }}
+              animate={{ y: [-25, 25, -25] }}
               transition={{ 
-                duration: 6 + i, 
+                duration: 7 + i, 
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
