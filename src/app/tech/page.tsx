@@ -167,7 +167,7 @@ function TeamSection() {
 
   return (
     <section className="py-32 px-4 max-w-7xl mx-auto w-full">
-      <h2 className="font-headline text-4xl text-white mb-20 uppercase tracking-tighter">MEET THE SQUAD</h2>
+      <h2 className="font-headline text-4xl text-white mb-20 uppercase tracking-tighter text-center">MEET THE SQUAD</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-12">
         {team.map((name, i) => (
@@ -176,7 +176,7 @@ function TeamSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [-30, 30, -30] }}
+              animate={{ y: [-35, 35, -35] }}
               transition={{ 
                 duration: 7 + i, 
                 repeat: Infinity, 
