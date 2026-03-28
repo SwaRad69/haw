@@ -21,11 +21,9 @@ export default function TechPage() {
 function TechStackSection() {
   const techItems = [
     { name: "AWS", logo: "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" },
-    { name: "FastAPI", logo: "https://raw.githubusercontent.com/fastapi/fastapi/master/docs/en/docs/img/icon-white.svg" },
     { name: "Next.js", logo: "https://www.vectorlogo.zone/logos/nextjs/nextjs-icon.svg" },
     { name: "Tailwind CSS", logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
     { name: "PySpark", logo: "https://www.vectorlogo.zone/logos/apache_spark/apache_spark-icon.svg" },
-    { name: "Pandas", logo: "https://raw.githubusercontent.com/pandas-dev/pandas/master/doc/static/pandas.svg" },
     { name: "Twilio", logo: "https://www.vectorlogo.zone/logos/twilio/twilio-icon.svg" }
   ]
 
@@ -98,7 +96,9 @@ function ArchitectureSection() {
               whileInView={{ opacity: 1 }}
               className="glass w-full md:w-48 h-32 rounded-2xl flex flex-col items-center justify-center gap-3 border border-primary/20 group hover:border-accent transition-colors"
             >
-              <TypewriterText text={node.name} className="font-headline text-sm uppercase tracking-widest text-primary font-bold" delay={i * 0.2 + 0.5} />
+              <span className="font-headline text-sm uppercase tracking-widest text-primary font-bold">
+                {node.name}
+              </span>
             </motion.div>
             
             {i < flow.length - 1 && (
@@ -157,7 +157,9 @@ function ImpactSection() {
             }}
             className={`glass p-12 rounded-[3rem] border-b-4 ${imp.accent}/50 text-center flex flex-col items-center gap-6 h-full`}
           >
-            <TypewriterText text={imp.title} className="font-headline text-2xl text-primary uppercase font-bold" delay={i * 0.5} />
+            <h3 className="font-headline text-2xl text-primary uppercase font-bold">
+              {imp.title}
+            </h3>
             <p className="text-white/60 leading-relaxed font-body">
               {imp.desc}
             </p>
@@ -191,7 +193,9 @@ function TeamSection() {
             <div className="w-16 h-16 bg-primary/20 rounded-full mb-6 flex items-center justify-center text-primary group-hover:text-accent group-hover:bg-accent/20 transition-all">
               <div className="w-10 h-10 rounded-full border-2 border-current border-dashed animate-spin-slow" />
             </div>
-            <TypewriterText text={name} className="font-headline text-xl text-primary font-bold" delay={i * 0.2 + 0.8} />
+            <h3 className="font-headline text-xl text-primary font-bold">
+              {name}
+            </h3>
           </div>
         ))}
       </div>

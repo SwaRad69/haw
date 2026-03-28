@@ -107,7 +107,9 @@ function ProblemSection() {
             }}
             className="glass p-8 rounded-2xl border-l-4 border-l-primary/50 relative group h-full"
           >
-            <TypewriterText text={p.title} className="font-headline text-xl mb-4 text-primary uppercase" delay={i * 0.3} />
+            <h3 className="font-headline text-xl mb-4 text-primary uppercase">
+              {p.title}
+            </h3>
             <p className="text-white/60 font-body leading-relaxed text-sm">
               {p.desc}
             </p>
@@ -157,7 +159,9 @@ function WhySection() {
               }}
               className="glass p-10 rounded-xl border border-white/5 flex flex-col h-full"
             >
-              <TypewriterText text={item.title} className="font-headline text-2xl text-primary mb-4 uppercase" delay={i * 0.4} />
+              <h3 className="font-headline text-2xl text-primary mb-4 uppercase">
+                {item.title}
+              </h3>
               <p className="text-white/50 text-base">
                 {item.text}
               </p>
@@ -274,7 +278,9 @@ function FeaturesSection() {
               f.color
             )}
           >
-            <TypewriterText text={f.title} className="font-headline text-2xl text-primary mb-4 uppercase" delay={i * 0.5} />
+            <h3 className="font-headline text-2xl text-primary mb-4 uppercase">
+              {f.title}
+            </h3>
             <p className="text-white/60 text-lg leading-relaxed">
               {f.desc}
             </p>
