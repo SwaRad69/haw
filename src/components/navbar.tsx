@@ -14,7 +14,7 @@ export function Navbar() {
       className="fixed top-0 left-0 right-0 z-[100] p-6 flex justify-between items-center"
     >
       <div className="flex items-center gap-2">
-        <span className="font-headline font-bold text-xl tracking-tighter uppercase text-white/90">HEAPIFY</span>
+        <span className="font-headline font-bold text-xl tracking-widest uppercase text-white/90">HEAPIFY</span>
       </div>
 
       <div className="glass px-6 py-3 rounded-full flex gap-8">
@@ -22,7 +22,7 @@ export function Navbar() {
         <NavLink href="/tech" active={pathname === "/tech"}>Tech Stack</NavLink>
       </div>
 
-      {/* Spacer to keep links relatively centered when button is removed */}
+      {/* Spacer to keep links relatively centered */}
       <div className="w-[100px] hidden md:block" />
     </motion.nav>
   )
