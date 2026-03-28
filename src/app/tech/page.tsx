@@ -1,0 +1,185 @@
+"use client"
+
+import { motion } from "framer-motion"
+import { TypewriterText } from "@/components/typewriter-text"
+import { Server, Globe, Cpu, Layout, Cloud, ArrowRight, Shield, Zap, TrendingUp } from "lucide-react"
+
+export default function TechPage() {
+  return (
+    <div className="flex flex-col w-full">
+      <TechStackSection />
+      <ArchitectureSection />
+      <ImpactSection />
+      <TeamSection />
+      <FinalLineSection />
+    </div>
+  )
+}
+
+function TechStackSection() {
+  const logos = ["AWS", "OpenAI", "React", "Firebase", "Tailwind", "Python", "LlamaIndex", "Next.js"]
+
+  return (
+    <section className="min-h-[70vh] flex flex-col items-center justify-center pt-32 px-4 overflow-hidden">
+      <div className="text-center mb-20">
+        <TypewriterText text="TECH STACK" className="font-headline text-5xl md:text-7xl text-white mb-4 uppercase tracking-tighter" />
+        <p className="font-headline text-primary text-xl tracking-widest">Gen AI + AWS POWERED</p>
+      </div>
+
+      <div className="w-full relative py-12">
+        <div className="flex w-[200%] gap-20 animate-marquee">
+          {[...logos, ...logos].map((logo, i) => (
+            <div key={i} className="flex items-center gap-4 text-white/30 hover:text-white/100 transition-colors duration-300">
+              <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center">
+                <Cloud size={24} />
+              </div>
+              <span className="font-headline text-3xl font-bold uppercase tracking-widest">{logo}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
+        }
+      `}</style>
+    </section>
+  )
+}
+
+function ArchitectureSection() {
+  const flow = [
+    { name: "User", icon: <Globe /> },
+    { name: "API Layer", icon: <Layout /> },
+    { name: "AI Engine", icon: <Cpu /> },
+    { name: "Risk Engine", icon: <Shield /> },
+    { name: "Dashboard", icon: <Layout /> },
+  ]
+
+  return (
+    <section className="py-32 px-4 max-w-7xl mx-auto w-full">
+      <TypewriterText text="HOW IT WORKS" className="font-headline text-4xl md:text-6xl text-white mb-20 text-center uppercase" />
+
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 relative">
+        {flow.map((node, i) => (
+          <div key={i} className="flex flex-col md:flex-row items-center gap-4 md:gap-12 w-full md:w-auto">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: i * 0.1 }}
+              className="glass w-full md:w-48 h-32 rounded-2xl flex flex-col items-center justify-center gap-3 border border-primary/20 group hover:border-accent transition-colors"
+            >
+              <div className="text-primary group-hover:text-accent transition-colors">
+                {node.icon}
+              </div>
+              <span className="font-headline text-xs uppercase tracking-widest text-white/80">{node.name}</span>
+            </motion.div>
+            
+            {i < flow.length - 1 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                className="flex md:flex-row flex-col items-center"
+              >
+                <ArrowRight className="text-primary/40 md:rotate-0 rotate-90" size={24} />
+              </motion.div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function ImpactSection() {
+  const impacts = [
+    { title: "Reduce Cost", desc: "Automate 90% of manual regulatory research tasks.", icon: <TrendingUp /> },
+    { title: "Better Decision", desc: "Actionable insights based on multi-source reasoning.", icon: <Zap /> },
+    { title: "Real-time Intelligence", desc: "Stay compliant in a world of daily rule changes.", icon: <Shield /> },
+  ]
+
+  return (
+    <section className="py-32 px-4 max-w-7xl mx-auto w-full">
+      <TypewriterText text="IMPACT" className="font-headline text-4xl md:text-6xl text-white mb-20 text-center uppercase" />
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {impacts.map((imp, i) => (
+          <motion.div
+            key={i}
+            whileHover={{ rotate: [-1, 1, -1] }}
+            className="glass p-12 rounded-[3rem] border-b-4 border-b-accent/50 text-center flex flex-col items-center gap-6"
+          >
+            <div className="p-4 bg-primary/10 rounded-full text-accent shadow-[0_0_20px_rgba(118,185,0,0.2)]">
+              {imp.icon}
+            </div>
+            <h3 className="font-headline text-2xl text-white uppercase">{imp.title}</h3>
+            <p className="text-white/60 leading-relaxed">{imp.desc}</p>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function TeamSection() {
+  const team = [
+    { name: "John Doe", role: "CEO & Visionary" },
+    { name: "Jane Smith", role: "Co-founder & GRC Lead" },
+    { name: "Mike Ross", role: "Lead AI Engineer" },
+    { name: "Sarah Connor", role: "Frontend Architect" },
+  ]
+
+  return (
+    <section className="py-32 px-4 max-w-7xl mx-auto w-full">
+      <h2 className="font-headline text-4xl text-white mb-20 uppercase tracking-tighter">MEET THE SQUAD</h2>
+      
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        {team.map((member, i) => (
+          <motion.div
+            key={i}
+            whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(117, 255, 0, 0.15)" }}
+            className="glass p-8 rounded-2xl border border-white/5 group"
+          >
+            <div className="w-16 h-16 bg-primary/20 rounded-full mb-6 flex items-center justify-center text-primary group-hover:text-accent group-hover:bg-accent/20 transition-all">
+              <div className="w-10 h-10 rounded-full border-2 border-current border-dashed animate-spin-slow" />
+            </div>
+            <h4 className="font-headline text-xl text-white mb-2">{member.name}</h4>
+            <p className="text-primary text-xs uppercase tracking-widest">{member.role}</p>
+          </motion.div>
+        ))}
+      </div>
+      
+      <style jsx>{`
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 10s linear infinite;
+        }
+      `}</style>
+    </section>
+  )
+}
+
+function FinalLineSection() {
+  return (
+    <section className="py-60 px-4 text-center">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <p className="text-accent font-headline text-lg md:text-xl tracking-[0.5em] uppercase mb-8 opacity-50">Conclusion</p>
+        <h2 className="font-headline text-4xl md:text-7xl text-white uppercase tracking-tighter leading-tight max-w-5xl mx-auto">
+          Transforming <span className="text-primary">compliance</span> into <span className="text-accent underline decoration-accent/30 underline-offset-8">intelligence</span>.
+        </h2>
+      </motion.div>
+    </section>
+  )
+}
