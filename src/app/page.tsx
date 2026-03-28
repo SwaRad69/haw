@@ -88,7 +88,7 @@ function ProblemSection() {
       <motion.h2 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        className="font-headline text-4xl md:text-6xl text-white mb-16 tracking-tight text-center"
+        className="font-headline text-4xl md:text-6xl text-white mb-32 tracking-tight text-center"
       >
         PROBLEM STATEMENT
       </motion.h2>
