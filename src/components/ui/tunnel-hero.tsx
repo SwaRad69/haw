@@ -94,7 +94,9 @@ void main(){
     }
   }
 
-  gl_FragColor = vec4(color, 1.0);
+  // Use the brightness of the color to determine alpha for better blending
+  float alpha = max(max(color.r, color.g), color.b);
+  gl_FragColor = vec4(color, alpha);
 }
 `;
 
@@ -136,6 +138,8 @@ function createThreeForCanvas(canvas: HTMLCanvasElement, width: number, height: 
       vertexShader,
       fragmentShader,
       transparent: true,
+      depthTest: false,
+      depthWrite: false,
     });
 
     const geometry = new THREE.PlaneGeometry(2, 2);
@@ -144,7 +148,6 @@ function createThreeForCanvas(canvas: HTMLCanvasElement, width: number, height: 
 
     return { renderer, scene, camera, material, mesh, geometry };
   } catch (e) {
-    // Fail silently to avoid triggering error overlays in environments without WebGL
     return null;
   }
 }
@@ -186,7 +189,7 @@ export function TunnelBackground() {
     const canvas = canvasRef.current;
     if (!canvas || typeof window === "undefined") return;
 
-    // Pre-emptively check for WebGL support to avoid Three.js constructor errors
+    // Pre-emptively check for WebGL support
     const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
     if (!gl) return;
 
@@ -234,7 +237,7 @@ export function TunnelBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none opacity-40"
+      className="fixed inset-0 w-full h-full pointer-events-none opacity-80 z-[-1]"
       id="tunnel-canvas"
     />
   );
