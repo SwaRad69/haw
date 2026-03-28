@@ -1,3 +1,4 @@
+
 "use client"
 
 import { motion } from "framer-motion"
@@ -20,13 +21,9 @@ export default function TechPage() {
 function TechStackSection() {
   const techItems = [
     { name: "AWS", logo: "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" },
-    { name: "FastAPI", logo: "https://www.vectorlogo.zone/logos/fastapi/fastapi-icon.svg" },
     { name: "Next.js", logo: "https://www.vectorlogo.zone/logos/nextjs/nextjs-icon.svg" },
     { name: "Tailwind CSS", logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
     { name: "PySpark", logo: "https://www.vectorlogo.zone/logos/apache_spark/apache_spark-icon.svg" },
-    { name: "Pandas", logo: "https://www.vectorlogo.zone/logos/pandaspy/pandaspy-icon.svg" },
-    { name: "MLflow", logo: "https://www.vectorlogo.zone/logos/mlflow/mlflow-icon.svg" },
-    { name: "Tesseract", logo: "https://raw.githubusercontent.com/tesseract-ocr/tesseract/main/docs/tesseract_logo.png" },
     { name: "Twilio", logo: "https://www.vectorlogo.zone/logos/twilio/twilio-icon.svg" }
   ]
 
