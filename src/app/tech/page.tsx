@@ -84,17 +84,16 @@ function ArchitectureSection() {
           <div key={i} className="flex flex-col md:flex-row items-center gap-4 md:gap-12 w-full md:w-auto">
             <motion.div
               animate={{ 
-                y: [-45, 45, -45],
+                y: [-35, 35, -35],
               }}
               transition={{ 
-                duration: 5, 
+                duration: 4.5, 
                 repeat: Infinity, 
                 ease: "easeInOut",
                 delay: i * 0.4
               }}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               className="glass w-full md:w-48 h-32 rounded-2xl flex flex-col items-center justify-center gap-3 border border-primary/20 group hover:border-accent transition-colors"
             >
               <TypewriterText text={node.name} className="font-headline text-xs uppercase tracking-widest text-primary font-bold" delay={i * 0.2 + 0.5} />
@@ -145,24 +144,21 @@ function ImpactSection() {
         {impacts.map((imp, i) => (
           <motion.div
             key={i}
-            className="relative"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            animate={{ 
+              y: [-45, 45, -45],
+            }}
+            transition={{ 
+              y: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 },
+              opacity: { duration: 0.5, delay: i * 0.2 }
+            }}
+            className={`glass p-12 rounded-[3rem] border-b-4 ${imp.accent}/50 text-center flex flex-col items-center gap-6 h-full`}
           >
-            <motion.div
-              animate={{ 
-                y: [-60, 60, -60],
-              }}
-              transition={{ 
-                duration: 6, 
-                repeat: Infinity, 
-                ease: "easeInOut",
-                delay: i * 0.5
-              }}
-              whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
-              className={`glass p-12 rounded-[3rem] border-b-4 ${imp.accent}/50 text-center flex flex-col items-center gap-6 h-full`}
-            >
-              <TypewriterText text={imp.title} className="font-headline text-2xl text-primary uppercase font-bold" delay={i * 0.5} />
-              <TypewriterText text={imp.desc} className="text-white/60 leading-relaxed font-body" delay={i * 0.5 + 0.4} />
-            </motion.div>
+            <TypewriterText text={imp.title} className="font-headline text-2xl text-primary uppercase font-bold" delay={i * 0.5} />
+            <p className="text-white/60 leading-relaxed font-body">
+              {imp.desc}
+            </p>
           </motion.div>
         ))}
       </div>
@@ -188,26 +184,21 @@ function TeamSection() {
         {team.map((name, i) => (
           <motion.div
             key={i}
-            className="relative"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            animate={{ 
+              y: [-25, 25, -25],
+            }}
+            transition={{ 
+              y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 },
+              opacity: { duration: 0.5, delay: i * 0.2 }
+            }}
+            className="glass p-8 rounded-2xl border border-white/5 group h-full flex flex-col items-center text-center"
           >
-            <motion.div
-              animate={{ 
-                y: [-40, 40, -40],
-              }}
-              transition={{ 
-                duration: 5.5, 
-                repeat: Infinity, 
-                ease: "easeInOut",
-                delay: i * 0.3
-              }}
-              whileHover={{ scale: 1.1, y: 0, boxShadow: "0 0 40px rgba(117, 255, 0, 0.15)", transition: { duration: 0.3 } }}
-              className="glass p-8 rounded-2xl border border-white/5 group h-full flex flex-col items-center text-center"
-            >
-              <div className="w-16 h-16 bg-primary/20 rounded-full mb-6 flex items-center justify-center text-primary group-hover:text-accent group-hover:bg-accent/20 transition-all">
-                <div className="w-10 h-10 rounded-full border-2 border-current border-dashed animate-spin-slow" />
-              </div>
-              <TypewriterText text={name} className="font-headline text-xl text-primary font-bold" delay={i * 0.2 + 0.8} />
-            </motion.div>
+            <div className="w-16 h-16 bg-primary/20 rounded-full mb-6 flex items-center justify-center text-primary group-hover:text-accent group-hover:bg-accent/20 transition-all">
+              <div className="w-10 h-10 rounded-full border-2 border-current border-dashed animate-spin-slow" />
+            </div>
+            <TypewriterText text={name} className="font-headline text-xl text-primary font-bold" delay={i * 0.2 + 0.8} />
           </motion.div>
         ))}
       </div>

@@ -97,24 +97,19 @@ function ProblemSection() {
         {problems.map((p, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.2 }}
-            className="relative"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            animate={{ y: [-20, 20, -20] }}
+            transition={{ 
+              y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 },
+              opacity: { duration: 0.5, delay: i * 0.2 }
+            }}
+            className="glass p-8 rounded-2xl border-l-4 border-l-primary/50 relative group h-full"
           >
-            <motion.div
-              animate={{ y: [-30, 30, -30] }}
-              transition={{ 
-                duration: 5 + i, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-              }}
-              whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
-              className="glass p-8 rounded-2xl border-l-4 border-l-primary/50 relative group h-full"
-            >
-              <TypewriterText text={p.title} className="font-headline text-xl mb-4 text-primary uppercase" delay={i * 0.3} />
-              <TypewriterText text={p.desc} className="text-white/60 font-body leading-relaxed text-sm" delay={i * 0.3 + 0.5} />
-            </motion.div>
+            <TypewriterText text={p.title} className="font-headline text-xl mb-4 text-primary uppercase" delay={i * 0.3} />
+            <p className="text-white/60 font-body leading-relaxed text-sm">
+              {p.desc}
+            </p>
           </motion.div>
         ))}
       </div>
@@ -152,24 +147,19 @@ function WhySection() {
           {whyItems.map((item, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.2 }}
-              className="relative"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              animate={{ y: [-30, 30, -30] }}
+              transition={{ 
+                y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: i * 0.7 },
+                opacity: { duration: 0.5, delay: i * 0.2 }
+              }}
+              className="glass p-10 rounded-xl border border-white/5 flex flex-col h-full"
             >
-              <motion.div
-                animate={{ y: [-40, 40, -40] }}
-                transition={{ 
-                  duration: 6 + i, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }}
-                whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
-                className="glass p-10 rounded-xl border border-white/5 flex flex-col h-full"
-              >
-                <TypewriterText text={item.title} className="font-headline text-2xl text-primary mb-4 uppercase" delay={i * 0.4} />
-                <TypewriterText text={item.text} className="text-white/50 text-base" delay={i * 0.4 + 0.6} />
-              </motion.div>
+              <TypewriterText text={item.title} className="font-headline text-2xl text-primary mb-4 uppercase" delay={i * 0.4} />
+              <p className="text-white/50 text-base">
+                {item.text}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -227,7 +217,9 @@ function SolutionSection() {
           >
             <div className="absolute left-[-11px] top-0 w-5 h-5 bg-primary rounded-full shadow-[0_0_15px_#76B900]" />
             <TypewriterText text={step.title} className={cn("font-headline text-2xl md:text-3xl mb-4 uppercase", step.color)} delay={i * 0.5} />
-            <TypewriterText text={step.desc} className="text-white/60 text-lg leading-relaxed" delay={i * 0.5 + 0.4} />
+            <p className="text-white/60 text-lg leading-relaxed">
+              {step.desc}
+            </p>
           </motion.div>
         ))}
       </div>
@@ -267,27 +259,22 @@ function FeaturesSection() {
         {features.map((f, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.2 }}
-            className="relative"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            animate={{ y: [-40, 40, -40] }}
+            transition={{ 
+              y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: i * 0.8 },
+              opacity: { duration: 0.5, delay: i * 0.2 }
+            }}
+            className={cn(
+              "glass p-12 rounded-3xl border-t-2 relative overflow-hidden h-full",
+              f.color
+            )}
           >
-            <motion.div
-              animate={{ y: [-50, 50, -50] }}
-              transition={{ 
-                duration: 7 + i, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-              }}
-              whileHover={{ y: 0, scale: 1.05, boxShadow: "0 0 30px rgba(118, 185, 0, 0.2)", transition: { duration: 0.3 } }}
-              className={cn(
-                "glass p-12 rounded-3xl border-t-2 relative overflow-hidden h-full",
-                f.color
-              )}
-            >
-              <TypewriterText text={f.title} className="font-headline text-2xl text-primary mb-4 uppercase" delay={i * 0.5} />
-              <TypewriterText text={f.desc} className="text-white/60 text-lg leading-relaxed" delay={i * 0.5 + 0.4} />
-            </motion.div>
+            <TypewriterText text={f.title} className="font-headline text-2xl text-primary mb-4 uppercase" delay={i * 0.5} />
+            <p className="text-white/60 text-lg leading-relaxed">
+              {f.desc}
+            </p>
           </motion.div>
         ))}
       </div>
