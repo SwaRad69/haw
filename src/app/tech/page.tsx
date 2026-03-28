@@ -1,11 +1,10 @@
-
 "use client"
 
 import { motion } from "framer-motion"
 import { TypewriterText } from "@/components/typewriter-text"
-import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 import { useState, useEffect } from "react"
+import { PlaceHolderImages } from "@/lib/placeholder-images"
 
 export default function TechPage() {
   return (
@@ -66,13 +65,7 @@ function TechStackSection() {
 }
 
 function ArchitectureSection() {
-  const flow = [
-    { name: "User" },
-    { name: "API Layer" },
-    { name: "AI Engine" },
-    { name: "Risk Engine" },
-    { name: "Dashboard" },
-  ]
+  const architectureImage = PlaceHolderImages.find(img => img.id === 'architecture-diagram');
 
   return (
     <section className="py-32 px-4 max-w-7xl mx-auto w-full">
@@ -80,40 +73,22 @@ function ArchitectureSection() {
         <h2 className="font-headline text-4xl md:text-6xl text-primary uppercase text-center">HOW IT WORKS</h2>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 relative">
-        {flow.map((node, i) => (
-          <div key={i} className="flex flex-col md:flex-row items-center gap-4 md:gap-12 w-full md:w-auto">
-            <motion.div
-              animate={{ 
-                y: [-40, 40, -40],
-              }}
-              transition={{ 
-                duration: 5, 
-                repeat: Infinity, 
-                ease: "easeInOut",
-                delay: i * 0.4
-              }}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              className="glass w-full md:w-48 h-32 rounded-2xl flex flex-col items-center justify-center gap-3 border border-primary/20 group hover:border-accent transition-colors"
-            >
-              <span className="font-headline text-sm uppercase tracking-widest text-primary font-bold">
-                {node.name}
-              </span>
-            </motion.div>
-            
-            {i < flow.length - 1 && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                className="flex md:flex-row flex-col items-center"
-              >
-                <ArrowRight className="text-primary/40 md:rotate-0 rotate-90" size={24} />
-              </motion.div>
-            )}
-          </div>
-        ))}
-      </div>
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
+        className="glass rounded-3xl overflow-hidden border border-primary/20 relative aspect-video w-full max-w-5xl mx-auto shadow-[0_0_50px_rgba(118,185,0,0.1)]"
+      >
+        {architectureImage && (
+          <Image
+            src={architectureImage.imageUrl}
+            alt={architectureImage.description}
+            fill
+            className="object-contain p-4 md:p-8"
+            data-ai-hint={architectureImage.imageHint}
+          />
+        )}
+      </motion.div>
     </section>
   )
 }
@@ -182,7 +157,6 @@ function TeamSection() {
   const [offsets, setOffsets] = useState<{x: number, y: number}[]>([])
 
   useEffect(() => {
-    // Set random offsets after hydration for random startup positions
     setOffsets(team.map(() => ({
       x: Math.random() * 200 - 100,
       y: Math.random() * 200 - 100

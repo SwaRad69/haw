@@ -1,3 +1,10 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "architecture-diagram",
+      "description": "System architecture diagram showing the flow of regulatory data and AI analysis",
+      "imageUrl": "https://picsum.photos/seed/architecture/1200/800",
+      "imageHint": "architecture diagram"
+    }
+  ]
 }
