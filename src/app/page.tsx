@@ -25,9 +25,9 @@ function HeroSection() {
       </div>
       
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, rotateX: 20 }}
-        animate={{ opacity: 1, scale: 1, rotateX: 0 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
+        initial={{ opacity: 0, scale: 0.8, rotateX: 20, z: -200 }}
+        animate={{ opacity: 1, scale: 1, rotateX: 0, z: 0 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
         className="relative z-10 perspective-[1000px]"
       >
         <h1 
@@ -70,8 +70,8 @@ function HeroSection() {
 function ProblemSection() {
   const problems = [
     {
-      title: "Fragmented Data",
-      desc: "Regulatory information is scattered across thousands of jurisdictions and languages.",
+      title: "INEFFICIENT & FRAGMENTED KYC SYSTEMS",
+      desc: "Financial institutions still rely on manual and semi-automated KYC processes that are slow, inconsistent, and error-prone. Handling multi-format documents (images, PDFs, multilingual data) adds further complexity, leading to delays and operational inefficiencies.",
       icon: <Database className="text-accent" />
     },
     {
@@ -106,14 +106,14 @@ function ProblemSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [0, -25, 0] }}
+              animate={{ y: [0, -40, 0] }}
               transition={{ 
                 duration: 4, 
                 repeat: Infinity, 
                 ease: "easeInOut", 
                 delay: i * 0.6 
               }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               className="glass p-8 rounded-2xl border-l-4 border-l-primary/50 relative group h-full"
             >
               <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-100 transition-opacity">
