@@ -173,10 +173,10 @@ function ImpactSection() {
 
 function TeamSection() {
   const team = [
-    { name: "Rohan", title: "CEO & Founder" },
-    { name: "Swaroop Hebbar", title: "CTO" },
-    { name: "Krish Sharma", title: "Lead AI Engineer" },
-    { name: "Samarth Sharma", title: "Product Architect" },
+    { name: "Rohan", title: "CEO & Founder :)" },
+    { name: "Swaroop Hebbar", title: "CTO :)" },
+    { name: "Krish Sharma", title: "Lead AI Engineer :)" },
+    { name: "Samarth Sharma", title: "Product Architect :)" },
   ]
 
   const [offsets, setOffsets] = useState<{x: number, y: number}[]>([])
