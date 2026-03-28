@@ -126,17 +126,14 @@ function ProblemSection() {
 function WhySection() {
   const whyItems = [
     { 
-      label: "01", 
       title: "REGULATORY PRESSURE IS INCREASING", 
       text: "RBI and global compliance norms are becoming stricter and more frequent. Institutions must adapt faster to avoid penalties and regulatory risk." 
     },
     { 
-      label: "02", 
       title: "DATA & TRANSACTIONS ARE EXPLODING", 
       text: "Digital banking and fintech growth have led to massive increases in users, transactions, and data complexity. Manual systems can no longer keep up." 
     },
     { 
-      label: "03", 
       title: "NEED FOR REAL-TIME, EXPLAINABLE AI", 
       text: "Compliance decisions must be fast, accurate, and explainable. Organizations now require AI systems that provide clear reasoning and audit-ready outputs." 
     }
@@ -162,8 +159,7 @@ function WhySection() {
               whileHover={{ scale: 1.02 }}
               className="glass p-10 rounded-xl border border-white/5 flex flex-col"
             >
-              <span className="font-headline text-primary mb-8 text-sm tracking-widest">{item.label}</span>
-              <h3 className="font-headline text-2xl text-white mb-4">{item.title}</h3>
+              <h3 className="font-headline text-2xl text-white mb-4 uppercase">{item.title}</h3>
               <p className="text-white/50">{item.text}</p>
             </motion.div>
           ))}
@@ -216,8 +212,8 @@ function FeaturesSection() {
 
   return (
     <section className="py-32 px-4 max-w-7xl mx-auto">
-      <h2 className="font-headline text-4xl md:text-6xl text-white mb-20 text-right uppercase tracking-tighter">
-        Core Capabilities
+      <h2 className="font-headline text-4xl md:text-6xl text-white mb-20 text-center uppercase tracking-tighter">
+        FEATURES
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
