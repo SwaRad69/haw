@@ -78,7 +78,7 @@ function ProblemSection() {
       desc: "RBI rules change frequently, but systems struggle to adapt in real time. Applying the correct rule at the right time becomes difficult.",
     },
     {
-      title: "Zero Intelligence",
+      title: "LACK OF EXPLAINABILITY & INTELLIGENT MONITORING",
       desc: "Static checklists lack the context-aware reasoning needed to identify real risks.",
     }
   ]
