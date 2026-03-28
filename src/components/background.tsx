@@ -66,7 +66,7 @@ function Meteor({ index }: { index: number }) {
         ease: "linear",
         repeatDelay: Math.random() * 10
       }}
-      className="absolute h-[1px] w-[300px] bg-gradient-to-r from-primary via-primary/50 to-transparent origin-left"
+      className="absolute h-[1px] w-[300px] bg-gradient-to-l from-primary via-primary/50 to-transparent origin-left"
       style={{
         left: config.startOffset,
         top: "-10vh",
@@ -74,9 +74,9 @@ function Meteor({ index }: { index: number }) {
         boxShadow: "0 0 20px rgba(118, 185, 0, 0.4)",
       }}
     >
-      {/* Meteor Head */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_12px_#76B900]" />
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-primary/40 rounded-full blur-[2px]" />
+      {/* Meteor Head - Positioned at the front (right side of the segment) */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_12px_#76B900]" />
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-primary/40 rounded-full blur-[2px]" />
     </motion.div>
   )
 }
