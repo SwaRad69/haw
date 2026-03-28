@@ -109,30 +109,35 @@ type ThreeContext = {
   geometry: THREE.PlaneGeometry;
 };
 
-function createThreeForCanvas(canvas: HTMLCanvasElement, width: number, height: number): ThreeContext {
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  const dpr = Math.min(typeof window !== 'undefined' ? window.devicePixelRatio : 1, 2);
-  renderer.setPixelRatio(dpr);
-  renderer.setSize(width, height);
+function createThreeForCanvas(canvas: HTMLCanvasElement, width: number, height: number): ThreeContext | null {
+  try {
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, failIfMajorPerformanceCaveat: false });
+    const dpr = Math.min(typeof window !== 'undefined' ? window.devicePixelRatio : 1, 2);
+    renderer.setPixelRatio(dpr);
+    renderer.setSize(width, height);
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const scene = new THREE.Scene();
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
-  const material = new THREE.ShaderMaterial({
-    uniforms: {
-      iTime: { value: 0 },
-      iResolution: { value: new THREE.Vector3(width, height, 1) },
-    },
-    vertexShader,
-    fragmentShader,
-    transparent: true,
-  });
+    const material = new THREE.ShaderMaterial({
+      uniforms: {
+        iTime: { value: 0 },
+        iResolution: { value: new THREE.Vector3(width, height, 1) },
+      },
+      vertexShader,
+      fragmentShader,
+      transparent: true,
+    });
 
-  const geometry = new THREE.PlaneGeometry(2, 2);
-  const mesh = new THREE.Mesh(geometry, material);
-  scene.add(mesh);
+    const geometry = new THREE.PlaneGeometry(2, 2);
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
 
-  return { renderer, scene, camera, material, mesh, geometry };
+    return { renderer, scene, camera, material, mesh, geometry };
+  } catch (e) {
+    console.warn("WebGL initialization failed:", e);
+    return null;
+  }
 }
 
 function disposeThree(ctx: ThreeContext) {
@@ -175,6 +180,8 @@ export function TunnelBackground() {
     const width = window.innerWidth;
     const height = window.innerHeight;
     const ctx = createThreeForCanvas(canvas, width, height);
+    if (!ctx) return; // Gracefully exit if WebGL fails
+    
     ctxRef.current = ctx;
 
     const handleResize = () => {
