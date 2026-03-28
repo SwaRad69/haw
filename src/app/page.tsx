@@ -31,7 +31,7 @@ function HeroSection() {
         className="relative z-10"
       >
         <h1 
-          className="glitch font-headline text-6xl md:text-9xl font-black text-white uppercase tracking-tighter leading-none mb-6 whitespace-nowrap"
+          className="glitch font-headline text-5xl md:text-8xl font-black text-white uppercase tracking-widest leading-none mb-6 whitespace-nowrap"
           data-text="HACK 'A' WAR"
         >
           HACK 'A' WAR
