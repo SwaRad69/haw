@@ -145,12 +145,12 @@ function WhySection() {
   return (
     <section className="py-32 px-4 bg-white/[0.02]">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-20">
+        <div className="mb-20 text-center">
           <TypewriterText 
             text="WHY IN 2026?"
             className="font-headline text-4xl md:text-6xl text-white mb-4 tracking-tight"
           />
-          <p className="text-grey-light font-body max-w-2xl">
+          <p className="text-grey-light font-body max-w-2xl mx-auto">
             The regulatory landscape has passed the threshold of human management. AI is no longer optional.
           </p>
         </div>
