@@ -14,9 +14,6 @@ export function Navbar() {
       className="fixed top-0 left-0 right-0 z-[100] p-6 flex justify-between items-center"
     >
       <div className="flex items-center gap-2">
-        <div className="w-8 h-8 bg-primary rounded-sm rotate-45 flex items-center justify-center">
-          <span className="text-black font-bold -rotate-45 font-headline">H</span>
-        </div>
         <span className="font-headline font-bold text-xl tracking-tighter uppercase text-white/90">HACK 'A' WAR</span>
       </div>
 
