@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { TypewriterText } from "@/components/typewriter-text"
 import { ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 export default function TechPage() {
   return (
@@ -17,19 +18,19 @@ export default function TechPage() {
 }
 
 function TechStackSection() {
-  const logos = [
-    "AWS", 
-    "FastAPI", 
-    "Next.js", 
-    "Tailwind CSS", 
-    "FAISS", 
-    "BGE Embeddings", 
-    "PySpark", 
-    "Pandas", 
-    "MLflow", 
-    "Tesseract", 
-    "BeautifulSoup", 
-    "Twilio"
+  const techItems = [
+    { name: "AWS", logo: "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" },
+    { name: "FastAPI", logo: "https://www.vectorlogo.zone/logos/fastapi/fastapi-icon.svg" },
+    { name: "Next.js", logo: "https://www.vectorlogo.zone/logos/nextjs/nextjs-icon.svg" },
+    { name: "Tailwind CSS", logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
+    { name: "FAISS", logo: "https://picsum.photos/seed/faiss/100/100" },
+    { name: "BGE Embeddings", logo: "https://picsum.photos/seed/bge/100/100" },
+    { name: "PySpark", logo: "https://www.vectorlogo.zone/logos/apache_spark/apache_spark-icon.svg" },
+    { name: "Pandas", logo: "https://www.vectorlogo.zone/logos/pandaspy/pandaspy-icon.svg" },
+    { name: "MLflow", logo: "https://www.vectorlogo.zone/logos/mlflow/mlflow-icon.svg" },
+    { name: "Tesseract", logo: "https://picsum.photos/seed/ocr/100/100" },
+    { name: "BeautifulSoup", logo: "https://picsum.photos/seed/bs4/100/100" },
+    { name: "Twilio", logo: "https://www.vectorlogo.zone/logos/twilio/twilio-icon.svg" }
   ]
 
   return (
@@ -40,9 +41,17 @@ function TechStackSection() {
 
       <div className="w-full relative py-12">
         <div className="flex w-max gap-20 animate-marquee whitespace-nowrap">
-          {[...logos, ...logos, ...logos].map((logo, i) => (
-            <div key={i} className="flex items-center gap-4 text-white/30 hover:text-white/100 transition-colors duration-300">
-              <span className="font-headline text-3xl font-bold uppercase tracking-widest">{logo}</span>
+          {[...techItems, ...techItems, ...techItems].map((item, i) => (
+            <div key={i} className="flex items-center gap-6 text-white/30 hover:text-white transition-all duration-300 group">
+              <div className="relative w-12 h-12 grayscale group-hover:grayscale-0 transition-all opacity-70 group-hover:opacity-100">
+                <Image 
+                  src={item.logo} 
+                  alt={item.name} 
+                  fill 
+                  className="object-contain"
+                />
+              </div>
+              <span className="font-headline text-3xl font-bold uppercase tracking-widest">{item.name}</span>
             </div>
           ))}
         </div>
@@ -78,11 +87,14 @@ function ArchitectureSection() {
         {flow.map((node, i) => (
           <div key={i} className="flex flex-col md:flex-row items-center gap-4 md:gap-12 w-full md:w-auto">
             <motion.div
-              animate={{ y: [-35, 35, -35] }}
+              animate={{ 
+                y: [0, -25, 0],
+              }}
               transition={{ 
-                duration: 5 + i, 
+                duration: 5, 
                 repeat: Infinity, 
-                ease: "easeInOut" 
+                ease: "easeInOut",
+                delay: i * 0.4
               }}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -138,11 +150,14 @@ function ImpactSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [-35, 35, -35] }}
+              animate={{ 
+                y: [0, -30, 0],
+              }}
               transition={{ 
-                duration: 6 + i, 
+                duration: 6, 
                 repeat: Infinity, 
-                ease: "easeInOut" 
+                ease: "easeInOut",
+                delay: i * 0.5
               }}
               whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
               className={`glass p-12 rounded-[3rem] border-b-4 ${imp.accent}/50 text-center flex flex-col items-center gap-6 h-full`}
@@ -176,11 +191,14 @@ function TeamSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [-35, 35, -35] }}
+              animate={{ 
+                y: [0, -25, 0],
+              }}
               transition={{ 
-                duration: 7 + i, 
+                duration: 5.5, 
                 repeat: Infinity, 
-                ease: "easeInOut" 
+                ease: "easeInOut",
+                delay: i * 0.3
               }}
               whileHover={{ scale: 1.1, y: 0, boxShadow: "0 0 40px rgba(117, 255, 0, 0.15)", transition: { duration: 0.3 } }}
               className="glass p-8 rounded-2xl border border-white/5 group h-full flex flex-col items-center text-center"
