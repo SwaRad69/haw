@@ -1,3 +1,4 @@
+
 "use client"
 
 import { motion } from "framer-motion"
@@ -152,15 +153,32 @@ function WhySection() {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-12">
           {whyItems.map((item, i) => (
             <motion.div
               key={i}
-              whileHover={{ scale: 1.02 }}
-              className="glass p-10 rounded-xl border border-white/5 flex flex-col"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.2 }}
+              className="relative"
             >
-              <h3 className="font-headline text-2xl text-white mb-4 uppercase">{item.title}</h3>
-              <p className="text-white/50">{item.text}</p>
+              {/* Hanging String Visual */}
+              <div className="absolute top-[-48px] left-1/2 -translate-x-1/2 w-px h-[48px] bg-gradient-to-b from-primary/0 to-primary/40" />
+
+              <motion.div
+                animate={{ rotate: [-1.2, 1.2, -1.2] }}
+                transition={{ 
+                  duration: 6 + i, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                style={{ originY: -0.1 }}
+                whileHover={{ scale: 1.02, rotate: 0, transition: { duration: 0.3 } }}
+                className="glass p-10 rounded-xl border border-white/5 flex flex-col h-full"
+              >
+                <h3 className="font-headline text-2xl text-white mb-4 uppercase">{item.title}</h3>
+                <p className="text-white/50">{item.text}</p>
+              </motion.div>
             </motion.div>
           ))}
         </div>
