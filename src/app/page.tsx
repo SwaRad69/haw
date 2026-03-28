@@ -104,7 +104,7 @@ function ProblemSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [-30, 30, -30] }}
+              animate={{ y: [-35, 35, -35] }}
               transition={{ 
                 duration: 5 + i, 
                 repeat: Infinity, 
@@ -159,7 +159,7 @@ function WhySection() {
               className="relative"
             >
               <motion.div
-                animate={{ y: [-30, 30, -30] }}
+                animate={{ y: [-40, 40, -40] }}
                 transition={{ 
                   duration: 6 + i, 
                   repeat: Infinity, 
@@ -268,7 +268,7 @@ function FeaturesSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [-35, 35, -35] }}
+              animate={{ y: [-45, 45, -45] }}
               transition={{ 
                 duration: 7 + i, 
                 repeat: Infinity, 

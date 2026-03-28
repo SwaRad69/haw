@@ -23,13 +23,10 @@ function TechStackSection() {
     { name: "FastAPI", logo: "https://www.vectorlogo.zone/logos/fastapi/fastapi-icon.svg" },
     { name: "Next.js", logo: "https://www.vectorlogo.zone/logos/nextjs/nextjs-icon.svg" },
     { name: "Tailwind CSS", logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
-    { name: "FAISS", logo: "https://picsum.photos/seed/faiss/100/100" },
-    { name: "BGE Embeddings", logo: "https://picsum.photos/seed/bge/100/100" },
     { name: "PySpark", logo: "https://www.vectorlogo.zone/logos/apache_spark/apache_spark-icon.svg" },
     { name: "Pandas", logo: "https://www.vectorlogo.zone/logos/pandaspy/pandaspy-icon.svg" },
     { name: "MLflow", logo: "https://www.vectorlogo.zone/logos/mlflow/mlflow-icon.svg" },
     { name: "Tesseract", logo: "https://picsum.photos/seed/ocr/100/100" },
-    { name: "BeautifulSoup", logo: "https://picsum.photos/seed/bs4/100/100" },
     { name: "Twilio", logo: "https://www.vectorlogo.zone/logos/twilio/twilio-icon.svg" }
   ]
 
@@ -88,7 +85,7 @@ function ArchitectureSection() {
           <div key={i} className="flex flex-col md:flex-row items-center gap-4 md:gap-12 w-full md:w-auto">
             <motion.div
               animate={{ 
-                y: [0, -25, 0],
+                y: [-35, 35, -35],
               }}
               transition={{ 
                 duration: 5, 
@@ -151,7 +148,7 @@ function ImpactSection() {
           >
             <motion.div
               animate={{ 
-                y: [0, -30, 0],
+                y: [-45, 45, -45],
               }}
               transition={{ 
                 duration: 6, 
@@ -192,7 +189,7 @@ function TeamSection() {
           >
             <motion.div
               animate={{ 
-                y: [0, -25, 0],
+                y: [-35, 35, -35],
               }}
               transition={{ 
                 duration: 5.5, 
