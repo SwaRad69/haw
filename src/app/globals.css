@@ -59,6 +59,7 @@
 .glitch {
   position: relative;
   display: inline-block;
+  animation: flicker 4s infinite step-end;
 }
 
 .glitch::before,
@@ -83,6 +84,15 @@
   left: -3px;
   text-shadow: -3px 0 #75ff00, 3px 3px #75ff00;
   animation: glitch-anim2 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes flicker {
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: 1;
+  }
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0;
+  }
 }
 
 @keyframes glitch-anim {
