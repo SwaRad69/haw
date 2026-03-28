@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { TypewriterText } from "@/components/typewriter-text"
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
+import { useState, useEffect } from "react"
 
 export default function TechPage() {
   return (
@@ -172,11 +173,21 @@ function ImpactSection() {
 
 function TeamSection() {
   const team = [
-    "Rohan",
-    "Swaroop Hebbar",
-    "Krish Sharma",
-    "Samarth Sharma",
+    "Rohan :)",
+    "Swaroop Hebbar :)",
+    "Krish Sharma :)",
+    "Samarth Sharma :)",
   ]
+
+  const [offsets, setOffsets] = useState<{x: number, y: number}[]>([])
+
+  useEffect(() => {
+    // Set random offsets after hydration
+    setOffsets(team.map(() => ({
+      x: Math.random() * 200 - 100,
+      y: Math.random() * 200 - 100
+    })))
+  }, [])
 
   return (
     <section className="py-32 px-4 max-w-7xl mx-auto w-full flex flex-col items-center">
@@ -186,14 +197,26 @@ function TeamSection() {
       
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-12 w-full">
         {team.map((name, i) => (
-          <div
+          <motion.div
             key={i}
+            initial={{ 
+              opacity: 0, 
+              x: offsets[i]?.x || 0, 
+              y: offsets[i]?.y || 0 
+            }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ 
+              duration: 1, 
+              ease: [0.23, 1, 0.32, 1],
+              delay: i * 0.1 
+            }}
             className="glass p-8 rounded-2xl border border-white/5 group h-full flex flex-col items-center text-center transition-all duration-300 hover:border-primary/50"
           >
             <h3 className="font-headline text-xl text-primary font-bold">
               {name}
             </h3>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
