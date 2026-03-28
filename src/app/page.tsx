@@ -79,7 +79,7 @@ function ProblemSection() {
     },
     {
       title: "LACK OF EXPLAINABILITY & INTELLIGENT MONITORING",
-      desc: "Static checklists lack the context-aware reasoning needed to identify real risks.",
+      desc: "Systems lack transparency and clear reasoning for decisions. Limited traceability and weak monitoring increase compliance and fraud risks.",
     }
   ]
 
