@@ -11,7 +11,7 @@ export function Navbar() {
     <motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-[100] p-6 flex justify-between items-center"
+      className="absolute top-0 left-0 right-0 z-[100] p-6 flex justify-between items-center"
     >
       <div className="flex items-center gap-2">
         <span className="font-headline font-bold text-xl tracking-widest uppercase text-white/90">HEAPIFY</span>
