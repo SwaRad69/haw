@@ -5,7 +5,30 @@ import { motion } from "framer-motion"
 import { TypewriterText } from "@/components/typewriter-text"
 import Image from "next/image"
 import { useState, useEffect } from "react"
-import { PlaceHolderImages } from "@/lib/placeholder-images"
+import { 
+  Database, 
+  Server, 
+  Cpu, 
+  Search, 
+  FileText, 
+  AlertCircle, 
+  ShieldCheck, 
+  RefreshCw, 
+  Send, 
+  Layout, 
+  ArrowRight,
+  Globe,
+  Zap,
+  Layers,
+  Eye,
+  Terminal,
+  Clock,
+  MessageSquare,
+  Mail,
+  CheckCircle,
+  FileSearch,
+  Settings
+} from "lucide-react"
 
 export default function TechPage() {
   return (
@@ -66,30 +89,158 @@ function TechStackSection() {
 }
 
 function ArchitectureSection() {
-  const architectureImage = PlaceHolderImages.find(img => img.id === 'architecture-diagram');
+  const architectureLayers = [
+    {
+      id: "1",
+      title: "DATA INPUT LAYER",
+      nodes: [
+        { name: "PAN / Aadhar Images", icon: Eye },
+        { name: "KYC PDFs (multi-language)", icon: FileText },
+        { name: "Transaction CSV", icon: Database },
+        { name: "RBI Website", icon: Globe },
+        { name: "Sanctions Lists", icon: ShieldCheck }
+      ],
+      connections: ["API Gateway / FastAPI", "Lambda (validation)", "S3"]
+    },
+    {
+      id: "2",
+      title: "INGESTION LAYER",
+      nodes: [
+        { name: "AWS Glue (ETL)", icon: Settings },
+        { name: "Kinesis (Streaming)", icon: Zap },
+        { name: "Step Functions", icon: Layers }
+      ]
+    },
+    {
+      id: "3",
+      title: "DATA PLATFORM (LAKEHOUSE)",
+      nodes: [
+        { name: "S3 Data Lake", icon: Database },
+        { name: "Glue Data Catalog", icon: FileSearch },
+        { name: "Athena", icon: Search },
+        { name: "EMR (Spark)", icon: Cpu },
+        { name: "MLflow", icon: Terminal }
+      ]
+    },
+    {
+      id: "4",
+      title: "HYBRID RBI RAG PIPELINE",
+      nodes: [
+        { name: "Scraper (Playwright)", icon: Globe },
+        { name: "Chunking Engine", icon: Database },
+        { name: "Embedding Model", icon: Cpu },
+        { name: "Vector DB (FAISS)", icon: Database }
+      ]
+    },
+    {
+      id: "5",
+      title: "AGENTIC AI ENGINE",
+      nodes: [
+        { name: "Document Agent", icon: FileText },
+        { name: "RBI RAG Agent", icon: Search },
+        { name: "Transaction Agent", icon: Zap },
+        { name: "Temporal Engine", icon: Clock },
+        { name: "Decision Engine (LangGraph)", icon: Settings }
+      ]
+    },
+    {
+      id: "6",
+      title: "DECISION OUTPUT",
+      nodes: [
+        { name: "Approved / Rejected", icon: CheckCircle },
+        { name: "Reasoning / Logic", icon: MessageSquare },
+        { name: "RBI Clauses", icon: FileText },
+        { name: "Alert Flags", icon: AlertCircle }
+      ]
+    },
+    {
+      id: "7",
+      title: "GOVERNANCE & AUDIT",
+      nodes: [
+        { name: "MLflow Tracking", icon: Terminal },
+        { name: "Decision Logs", icon: Database },
+        { name: "Audit Trail", icon: Clock }
+      ]
+    },
+    {
+      id: "8",
+      title: "ACTION LAYER",
+      nodes: [
+        { name: "Twilio SMS", icon: MessageSquare },
+        { name: "Email Alerts", icon: Mail },
+        { name: "SAR PDF Report", icon: FileText },
+        { name: "FastAPI Triggers", icon: Zap }
+      ]
+    },
+    {
+      id: "9",
+      title: "FRONTEND",
+      nodes: [
+        { name: "Ops View Dashboard", icon: Layout },
+        { name: "Regulator View", icon: ShieldCheck },
+        { name: "Next.js UI", icon: Globe }
+      ]
+    },
+    {
+      id: "10",
+      title: "FEEDBACK LOOP",
+      nodes: [
+        { name: "Feedback Store", icon: Database },
+        { name: "Model Retraining", icon: RefreshCw },
+        { name: "Rule Updates", icon: Settings }
+      ]
+    }
+  ]
 
   return (
-    <section className="py-32 px-4 max-w-7xl mx-auto w-full">
-      <div className="flex justify-center mb-20">
-        <h2 className="font-headline text-4xl md:text-6xl text-primary uppercase text-center">HOW IT WORKS</h2>
-      </div>
+    <section className="py-32 px-4 w-full">
+      <div className="max-w-7xl mx-auto flex flex-col items-center">
+        <h2 className="font-headline text-4xl md:text-6xl text-primary uppercase text-center mb-20">HOW IT WORKS</h2>
+        
+        <div className="grid grid-cols-1 gap-6 w-full max-w-6xl">
+          {architectureLayers.map((layer, idx) => (
+            <motion.div
+              key={layer.id}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: idx * 0.1 }}
+              className="glass rounded-2xl border border-primary/20 overflow-hidden flex flex-col md:flex-row group hover:border-primary/50 transition-all duration-300"
+            >
+              {/* Layer Title */}
+              <div className="bg-primary/5 border-b md:border-b-0 md:border-r border-primary/20 p-4 md:w-64 flex items-center gap-4">
+                <span className="font-headline text-lg text-primary/50">{layer.id}.</span>
+                <h3 className="font-headline text-sm text-primary uppercase tracking-tight">{layer.title}</h3>
+              </div>
 
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-        className="glass rounded-3xl overflow-hidden border border-primary/20 relative aspect-video w-full max-w-5xl mx-auto shadow-[0_0_50px_rgba(118,185,0,0.1)]"
-      >
-        {architectureImage && (
-          <Image
-            src={architectureImage.imageUrl}
-            alt={architectureImage.description}
-            fill
-            className="object-contain p-4 md:p-8"
-            data-ai-hint={architectureImage.imageHint}
-          />
-        )}
-      </motion.div>
+              {/* Nodes Area */}
+              <div className="p-4 flex-1 flex flex-wrap gap-3 items-center">
+                {layer.nodes.map((node, nIdx) => (
+                  <div key={nIdx} className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-2 rounded-lg group-hover:bg-primary/5 transition-colors">
+                      <node.icon className="w-4 h-4 text-primary" />
+                      <span className="text-[10px] md:text-xs font-medium text-white/70 whitespace-nowrap">{node.name}</span>
+                    </div>
+                    {nIdx < layer.nodes.length - 1 && (
+                      <ArrowRight className="w-4 h-4 text-primary/30 hidden sm:block" />
+                    )}
+                  </div>
+                ))}
+                
+                {layer.connections && (
+                  <div className="flex items-center gap-2 ml-auto">
+                    <div className="h-px w-8 bg-primary/20" />
+                    {layer.connections.map((conn, cIdx) => (
+                      <div key={cIdx} className="bg-primary/10 border border-primary/20 px-2 py-1 rounded text-[10px] text-primary uppercase font-bold">
+                        {conn}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   )
 }
