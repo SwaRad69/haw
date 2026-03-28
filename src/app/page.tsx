@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { TypewriterText } from "@/components/typewriter-text"
 import { ChevronDown } from "lucide-react"
 import { TunnelBackground } from "@/components/ui/tunnel-hero"
+import { cn } from "@/lib/utils"
 
 export default function HomePage() {
   return (
@@ -189,10 +190,31 @@ function WhySection() {
 
 function SolutionSection() {
   const steps = [
-    { title: "Data Ingestion", desc: "Automated crawling of global regulatory websites, news, and official gazettes." },
-    { title: "AI Processing", desc: "Our Reasoning Engine analyzes the impact of new rules on your specific business context." },
-    { title: "Risk Detection", desc: "Probabilistic risk scoring based on historical non-compliance and new requirements." },
-    { title: "Insight Delivery", desc: "Real-time alerts and strategic advice pushed directly to the compliance dashboard." }
+    { 
+      title: "DATA INGESTION & PREPARATION", 
+      desc: "User uploads KYC documents and transaction data, while external sources (RBI, sanctions lists) are fetched. Data is validated, processed, and stored in the central data platform.",
+      color: "text-blue-400"
+    },
+    { 
+      title: "REGULATORY INTELLIGENCE (RAG PIPELINE)", 
+      desc: "RBI rules are scraped, filtered, chunked, and converted into embeddings. Both static documents and live updates are indexed for real-time retrieval.",
+      color: "text-purple-400"
+    },
+    { 
+      title: "AGENTIC AI ANALYSIS", 
+      desc: "Multiple AI agents process the data: Document understanding, Rule retrieval, Transaction analysis, Sanctions matching, and Time-based rule application. All insights are combined through the decision engine.",
+      color: "text-green-400"
+    },
+    { 
+      title: "EXPLAINABLE DECISION & ACTION", 
+      desc: "System generates a decision (Approved / Rejected / Review) with clear reasoning, RBI clause references, and flags. Actions like alerts, reports, and notifications are triggered.",
+      color: "text-yellow-400"
+    },
+    { 
+      title: "CONTINUOUS COMPLIANCE LOOP (CORE)", 
+      desc: "All decisions are logged and tracked. Feedback, rule updates, and model improvements continuously refine the system, ensuring it stays accurate and up-to-date.",
+      color: "text-orange-400"
+    }
   ]
 
   return (
@@ -211,8 +233,8 @@ function SolutionSection() {
             className="relative pl-12 md:w-2/3 md:mx-auto"
           >
             <div className="absolute left-[-11px] top-0 w-5 h-5 bg-primary rounded-full shadow-[0_0_15px_#76B900]" />
-            <span className="block font-headline text-accent text-xs tracking-widest mb-2">PHASE 0{i+1}</span>
-            <h3 className="font-headline text-3xl text-white mb-4 uppercase">{step.title}</h3>
+            <span className={cn("block font-headline text-xs tracking-widest mb-2 uppercase", step.color)}>PHASE 0{i+1}</span>
+            <h3 className="font-headline text-2xl md:text-3xl text-white mb-4 uppercase">{step.title}</h3>
             <p className="text-white/60 text-lg leading-relaxed">{step.desc}</p>
           </motion.div>
         ))}
