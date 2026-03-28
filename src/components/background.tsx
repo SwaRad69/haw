@@ -27,7 +27,7 @@ export function Background() {
         className="absolute inset-0 grid-bg opacity-20 z-[2]" 
       />
 
-      {/* Asteroids/Meteors effect - Left to Right */}
+      {/* Asteroids/Meteors effect - Top Left to Bottom Right */}
       <div className="absolute inset-0 z-[3]">
         {meteors.map((i) => (
           <Meteor key={i} index={i} />
@@ -38,14 +38,14 @@ export function Background() {
 }
 
 function Meteor({ index }: { index: number }) {
-  const [config, setConfig] = useState<{ top: string; duration: number; delay: number } | null>(null)
+  const [config, setConfig] = useState<{ startOffset: string; duration: number; delay: number } | null>(null)
 
   useEffect(() => {
     // Generate random values on client side to avoid hydration mismatch
     setConfig({
-      top: Math.random() * 100 + "%",
-      duration: Math.random() * 4 + 3, // Random speed
-      delay: Math.random() * 15,       // Random start time
+      startOffset: (Math.random() * 150 - 50) + "%", // Random starting horizontal position
+      duration: Math.random() * 6 + 4,              // Random speed
+      delay: Math.random() * 20,                    // Random start time
     })
   }, [])
 
@@ -53,9 +53,10 @@ function Meteor({ index }: { index: number }) {
 
   return (
     <motion.div
-      initial={{ x: "-20vw", opacity: 0 }}
+      initial={{ x: "-20vw", y: "-20vh", opacity: 0 }}
       animate={{ 
         x: "120vw", 
+        y: "120vh", 
         opacity: [0, 1, 1, 0] 
       }}
       transition={{
@@ -65,15 +66,17 @@ function Meteor({ index }: { index: number }) {
         ease: "linear",
         repeatDelay: Math.random() * 10
       }}
-      className="absolute h-[1px] w-[250px] bg-gradient-to-r from-primary via-primary/50 to-transparent"
+      className="absolute h-[1px] w-[300px] bg-gradient-to-r from-primary via-primary/50 to-transparent origin-left"
       style={{
-        top: config.top,
+        left: config.startOffset,
+        top: "-10vh",
+        rotate: "45deg",
         boxShadow: "0 0 20px rgba(118, 185, 0, 0.4)",
       }}
     >
       {/* Meteor Head */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-white rounded-full shadow-[0_0_12px_#76B900]" />
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-primary/40 rounded-full blur-[2px]" />
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_12px_#76B900]" />
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-primary/40 rounded-full blur-[2px]" />
     </motion.div>
   )
 }
