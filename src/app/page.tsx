@@ -1,4 +1,3 @@
-
 "use client"
 
 import { motion } from "framer-motion"
@@ -105,14 +104,13 @@ function ProblemSection() {
             className="relative"
           >
             <motion.div
-              animate={{ rotate: [-1.5, 1.5, -1.5] }}
+              animate={{ y: [-15, 15, -15] }}
               transition={{ 
-                duration: 5 + i, 
+                duration: 4 + i, 
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              style={{ originY: 0 }}
-              whileHover={{ scale: 1.02, rotate: 0, transition: { duration: 0.3 } }}
+              whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
               className="glass p-8 rounded-2xl border-l-4 border-l-primary/50 relative group h-full"
             >
               <h3 className="font-headline text-xl mb-4 text-primary uppercase">{p.title}</h3>
@@ -161,14 +159,13 @@ function WhySection() {
               className="relative"
             >
               <motion.div
-                animate={{ rotate: [-1.2, 1.2, -1.2] }}
+                animate={{ y: [-20, 20, -20] }}
                 transition={{ 
-                  duration: 6 + i, 
+                  duration: 5 + i, 
                   repeat: Infinity, 
                   ease: "easeInOut" 
                 }}
-                style={{ originY: 0 }}
-                whileHover={{ scale: 1.02, rotate: 0, transition: { duration: 0.3 } }}
+                whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
                 className="glass p-10 rounded-xl border border-white/5 flex flex-col h-full"
               >
                 <h3 className="font-headline text-2xl text-white mb-4 uppercase">{item.title}</h3>
@@ -272,14 +269,13 @@ function FeaturesSection() {
             className="relative"
           >
             <motion.div
-              animate={{ rotate: [-1, 1, -1] }}
+              animate={{ y: [-15, 15, -15] }}
               transition={{ 
-                duration: 7 + i, 
+                duration: 6 + i, 
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              style={{ originY: 0 }}
-              whileHover={{ y: -10, rotate: 0, scale: 1.02, boxShadow: "0 0 30px rgba(118, 185, 0, 0.2)" }}
+              whileHover={{ y: 0, scale: 1.05, boxShadow: "0 0 30px rgba(118, 185, 0, 0.2)", transition: { duration: 0.3 } }}
               className={cn(
                 "glass p-12 rounded-3xl border-t-2 relative overflow-hidden h-full",
                 f.color

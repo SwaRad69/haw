@@ -1,4 +1,3 @@
-
 "use client"
 
 import { motion } from "framer-motion"
@@ -133,14 +132,13 @@ function ImpactSection() {
             className="relative"
           >
             <motion.div
-              animate={{ rotate: [-1.2, 1.2, -1.2] }}
+              animate={{ y: [-15, 15, -15] }}
               transition={{ 
-                duration: 6 + i, 
+                duration: 5 + i, 
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              style={{ originY: 0 }}
-              whileHover={{ rotate: 0, scale: 1.02, transition: { duration: 0.3 } }}
+              whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
               className={`glass p-12 rounded-[3rem] border-b-4 ${imp.accent}/50 text-center flex flex-col items-center gap-6 h-full`}
             >
               <h3 className="font-headline text-2xl text-white uppercase">{imp.title}</h3>
@@ -172,14 +170,13 @@ function TeamSection() {
             className="relative"
           >
             <motion.div
-              animate={{ rotate: [-1.5, 1.5, -1.5] }}
+              animate={{ y: [-15, 15, -15] }}
               transition={{ 
-                duration: 5.5 + i, 
+                duration: 6 + i, 
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              style={{ originY: 0 }}
-              whileHover={{ scale: 1.05, rotate: 0, boxShadow: "0 0 40px rgba(117, 255, 0, 0.15)" }}
+              whileHover={{ scale: 1.1, y: 0, boxShadow: "0 0 40px rgba(117, 255, 0, 0.15)", transition: { duration: 0.3 } }}
               className="glass p-8 rounded-2xl border border-white/5 group h-full"
             >
               <div className="w-16 h-16 bg-primary/20 rounded-full mb-6 flex items-center justify-center text-primary group-hover:text-accent group-hover:bg-accent/20 transition-all">
