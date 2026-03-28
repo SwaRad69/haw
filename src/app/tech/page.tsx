@@ -105,9 +105,21 @@ function ArchitectureSection() {
 
 function ImpactSection() {
   const impacts = [
-    { title: "Reduce Cost", desc: "Automate 90% of manual regulatory research tasks." },
-    { title: "Better Decision", desc: "Actionable insights based on multi-source reasoning." },
-    { title: "Real-time Intelligence", desc: "Stay compliant in a world of daily rule changes." },
+    { 
+      title: "CONTINUOUS COMPLIANCE LOOP (CORE IMPACT)", 
+      desc: "System follows a closed loop: Ingest → Analyze → Apply Rules → Decide → Audit → Improve. Ensures the system continuously learns and stays up-to-date with regulations.",
+      accent: "border-b-primary"
+    },
+    { 
+      title: "REAL-TIME & ADAPTIVE DECISION MAKING", 
+      desc: "Applies the right RBI rule at the right time using the temporal engine. Adapts instantly to new regulations and changing data.",
+      accent: "border-b-accent"
+    },
+    { 
+      title: "EXPLAINABLE & TRUSTED COMPLIANCE", 
+      desc: "Every decision is backed by clear reasoning, RBI clauses, and full traceability. Builds regulator trust and simplifies audits.",
+      accent: "border-b-primary"
+    },
   ]
 
   return (
@@ -119,10 +131,10 @@ function ImpactSection() {
           <motion.div
             key={i}
             whileHover={{ rotate: [-1, 1, -1] }}
-            className="glass p-12 rounded-[3rem] border-b-4 border-b-accent/50 text-center flex flex-col items-center gap-6"
+            className={`glass p-12 rounded-[3rem] border-b-4 ${imp.accent}/50 text-center flex flex-col items-center gap-6 h-full`}
           >
             <h3 className="font-headline text-2xl text-white uppercase">{imp.title}</h3>
-            <p className="text-white/60 leading-relaxed">{imp.desc}</p>
+            <p className="text-white/60 leading-relaxed font-body">{imp.desc}</p>
           </motion.div>
         ))}
       </div>
