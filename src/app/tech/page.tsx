@@ -22,13 +22,13 @@ function TechStackSection() {
     "FastAPI", 
     "Next.js", 
     "Tailwind CSS", 
-    "FAISS / Chroma", 
+    "FAISS", 
     "BGE Embeddings", 
     "PySpark", 
     "Pandas", 
     "MLflow", 
-    "Tesseract / EasyOCR", 
-    "BeautifulSoup / Playwright", 
+    "Tesseract", 
+    "BeautifulSoup", 
     "Twilio"
   ]
 
@@ -78,7 +78,7 @@ function ArchitectureSection() {
         {flow.map((node, i) => (
           <div key={i} className="flex flex-col md:flex-row items-center gap-4 md:gap-12 w-full md:w-auto">
             <motion.div
-              animate={{ y: [-30, 30, -30] }}
+              animate={{ y: [-35, 35, -35] }}
               transition={{ 
                 duration: 5 + i, 
                 repeat: Infinity, 
@@ -89,7 +89,7 @@ function ArchitectureSection() {
               whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
               className="glass w-full md:w-48 h-32 rounded-2xl flex flex-col items-center justify-center gap-3 border border-primary/20 group hover:border-accent transition-colors"
             >
-              <span className="font-headline text-xs uppercase tracking-widest text-white/80">{node.name}</span>
+              <span className="font-headline text-xs uppercase tracking-widest text-primary font-bold">{node.name}</span>
             </motion.div>
             
             {i < flow.length - 1 && (
@@ -147,7 +147,7 @@ function ImpactSection() {
               whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
               className={`glass p-12 rounded-[3rem] border-b-4 ${imp.accent}/50 text-center flex flex-col items-center gap-6 h-full`}
             >
-              <h3 className="font-headline text-2xl text-primary uppercase">{imp.title}</h3>
+              <h3 className="font-headline text-2xl text-primary uppercase font-bold">{imp.title}</h3>
               <p className="text-white/60 leading-relaxed font-body">{imp.desc}</p>
             </motion.div>
           </motion.div>
@@ -188,7 +188,7 @@ function TeamSection() {
               <div className="w-16 h-16 bg-primary/20 rounded-full mb-6 flex items-center justify-center text-primary group-hover:text-accent group-hover:bg-accent/20 transition-all">
                 <div className="w-10 h-10 rounded-full border-2 border-current border-dashed animate-spin-slow" />
               </div>
-              <h4 className="font-headline text-xl text-primary">{name}</h4>
+              <h4 className="font-headline text-xl text-primary font-bold">{name}</h4>
             </motion.div>
           </motion.div>
         ))}
