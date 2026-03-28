@@ -126,15 +126,29 @@ function ImpactSection() {
     <section className="py-32 px-4 max-w-7xl mx-auto w-full">
       <TypewriterText text="IMPACT" className="font-headline text-4xl md:text-6xl text-white mb-20 text-center uppercase" />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
         {impacts.map((imp, i) => (
           <motion.div
             key={i}
-            whileHover={{ rotate: [-1, 1, -1] }}
-            className={`glass p-12 rounded-[3rem] border-b-4 ${imp.accent}/50 text-center flex flex-col items-center gap-6 h-full`}
+            className="relative"
           >
-            <h3 className="font-headline text-2xl text-white uppercase">{imp.title}</h3>
-            <p className="text-white/60 leading-relaxed font-body">{imp.desc}</p>
+            {/* Hanging String Visual */}
+            <div className="absolute top-[-48px] left-1/2 -translate-x-1/2 w-px h-[48px] bg-gradient-to-b from-primary/0 to-primary/40" />
+
+            <motion.div
+              animate={{ rotate: [-1.2, 1.2, -1.2] }}
+              transition={{ 
+                duration: 6 + i, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              style={{ originY: -0.1 }}
+              whileHover={{ rotate: 0, scale: 1.02, transition: { duration: 0.3 } }}
+              className={`glass p-12 rounded-[3rem] border-b-4 ${imp.accent}/50 text-center flex flex-col items-center gap-6 h-full`}
+            >
+              <h3 className="font-headline text-2xl text-white uppercase">{imp.title}</h3>
+              <p className="text-white/60 leading-relaxed font-body">{imp.desc}</p>
+            </motion.div>
           </motion.div>
         ))}
       </div>

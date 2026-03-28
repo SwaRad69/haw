@@ -93,7 +93,7 @@ function ProblemSection() {
         PROBLEM STATEMENT
       </motion.h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
         {problems.map((p, i) => (
           <motion.div
             key={i}
@@ -102,15 +102,18 @@ function ProblemSection() {
             transition={{ delay: i * 0.2 }}
             className="relative"
           >
+            {/* Hanging String Visual */}
+            <div className="absolute top-[-48px] left-1/2 -translate-x-1/2 w-px h-[48px] bg-gradient-to-b from-primary/0 to-primary/40" />
+            
             <motion.div
-              animate={{ y: [0, -40, 0] }}
+              animate={{ rotate: [-1.5, 1.5, -1.5] }}
               transition={{ 
-                duration: 4, 
+                duration: 5 + i, 
                 repeat: Infinity, 
-                ease: "easeInOut", 
-                delay: i * 0.6 
+                ease: "easeInOut" 
               }}
-              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+              style={{ originY: -0.1 }}
+              whileHover={{ scale: 1.02, rotate: 0, transition: { duration: 0.3 } }}
               className="glass p-8 rounded-2xl border-l-4 border-l-primary/50 relative group h-full"
             >
               <h3 className="font-headline text-xl mb-4 text-primary uppercase">{p.title}</h3>
