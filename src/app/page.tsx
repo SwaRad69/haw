@@ -245,9 +245,21 @@ function SolutionSection() {
 
 function FeaturesSection() {
   const features = [
-    { title: "Real-time Tracking", desc: "24/7 monitoring of 500+ global sources.", size: "col-span-1 md:col-span-2" },
-    { title: "Risk Scoring", desc: "ML-driven impact analysis for every update.", size: "col-span-1" },
-    { title: "Compliance Alerts", desc: "Instant notifications for critical breaches.", size: "col-span-1" },
+    { 
+      title: "AGENTIC AI-DRIVEN ANALYSIS", 
+      desc: "Multi-agent system processes documents, transactions, sanctions, and rules in parallel. Ensures intelligent, modular, and scalable compliance analysis.",
+      color: "border-t-purple-500/30"
+    },
+    { 
+      title: "REAL-TIME REGULATORY INTELLIGENCE", 
+      desc: "Hybrid RAG pipeline dynamically fetches and applies RBI rules. Temporal engine ensures the right rule is applied at the right time.",
+      color: "border-t-green-500/30"
+    },
+    { 
+      title: "EXPLAINABLE & ACTIONABLE OUTPUTS", 
+      desc: "Generates clear decisions with reasons, RBI clauses, and flags. Triggers real-world actions like alerts, reports, and notifications.",
+      color: "border-t-blue-500/30"
+    },
   ]
 
   return (
@@ -263,7 +275,7 @@ function FeaturesSection() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.2 }}
-            className={`relative ${f.size}`}
+            className="relative"
           >
             {/* Hanging String Visual */}
             <div className="absolute top-[-48px] left-1/2 -translate-x-1/2 w-px h-[48px] bg-gradient-to-b from-primary/0 to-primary/40" />
@@ -277,10 +289,13 @@ function FeaturesSection() {
               }}
               style={{ originY: -0.1 }}
               whileHover={{ y: -10, rotate: 0, scale: 1.02, boxShadow: "0 0 30px rgba(118, 185, 0, 0.2)" }}
-              className="glass p-12 rounded-3xl border-t-2 border-t-accent/30 relative overflow-hidden h-full"
+              className={cn(
+                "glass p-12 rounded-3xl border-t-2 relative overflow-hidden h-full",
+                f.color
+              )}
             >
-              <TypewriterText text={f.title} className="font-headline text-3xl text-white mb-4 uppercase" delay={i * 0.5} />
-              <p className="text-white/60 text-lg">{f.desc}</p>
+              <TypewriterText text={f.title} className="font-headline text-2xl text-white mb-4 uppercase" delay={i * 0.5} />
+              <p className="text-white/60 text-lg leading-relaxed">{f.desc}</p>
             </motion.div>
           </motion.div>
         ))}
