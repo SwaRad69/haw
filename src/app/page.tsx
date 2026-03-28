@@ -124,6 +124,24 @@ function ProblemSection() {
 }
 
 function WhySection() {
+  const whyItems = [
+    { 
+      label: "01", 
+      title: "REGULATORY PRESSURE IS INCREASING", 
+      text: "RBI and global compliance norms are becoming stricter and more frequent. Institutions must adapt faster to avoid penalties and regulatory risk." 
+    },
+    { 
+      label: "02", 
+      title: "DATA & TRANSACTIONS ARE EXPLODING", 
+      text: "Digital banking and fintech growth have led to massive increases in users, transactions, and data complexity. Manual systems can no longer keep up." 
+    },
+    { 
+      label: "03", 
+      title: "NEED FOR REAL-TIME, EXPLAINABLE AI", 
+      text: "Compliance decisions must be fast, accurate, and explainable. Organizations now require AI systems that provide clear reasoning and audit-ready outputs." 
+    }
+  ]
+
   return (
     <section className="py-32 px-4 bg-white/[0.02]">
       <div className="max-w-7xl mx-auto">
@@ -138,11 +156,7 @@ function WhySection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { label: "01", title: "Regulatory Explosion", text: "Global regulations grew by 400% in the last 2 years." },
-            { label: "02", title: "AI-Driven Risk", text: "Complex AI risks require AI-powered compliance agents." },
-            { label: "03", title: "Cost Efficiency", text: "Traditional compliance costs have tripled since 2024." }
-          ].map((item, i) => (
+          {whyItems.map((item, i) => (
             <motion.div
               key={i}
               whileHover={{ scale: 1.02 }}
