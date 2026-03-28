@@ -104,9 +104,6 @@ function ProblemSection() {
             transition={{ delay: i * 0.2 }}
             className="relative"
           >
-            {/* Hanging String Visual */}
-            <div className="absolute top-[-48px] left-1/2 -translate-x-1/2 w-px h-[48px] bg-gradient-to-b from-primary/0 to-primary/40" />
-            
             <motion.div
               animate={{ rotate: [-1.5, 1.5, -1.5] }}
               transition={{ 
@@ -114,7 +111,7 @@ function ProblemSection() {
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              style={{ originY: -0.1 }}
+              style={{ originY: 0 }}
               whileHover={{ scale: 1.02, rotate: 0, transition: { duration: 0.3 } }}
               className="glass p-8 rounded-2xl border-l-4 border-l-primary/50 relative group h-full"
             >
@@ -163,9 +160,6 @@ function WhySection() {
               transition={{ delay: i * 0.2 }}
               className="relative"
             >
-              {/* Hanging String Visual */}
-              <div className="absolute top-[-48px] left-1/2 -translate-x-1/2 w-px h-[48px] bg-gradient-to-b from-primary/0 to-primary/40" />
-
               <motion.div
                 animate={{ rotate: [-1.2, 1.2, -1.2] }}
                 transition={{ 
@@ -173,7 +167,7 @@ function WhySection() {
                   repeat: Infinity, 
                   ease: "easeInOut" 
                 }}
-                style={{ originY: -0.1 }}
+                style={{ originY: 0 }}
                 whileHover={{ scale: 1.02, rotate: 0, transition: { duration: 0.3 } }}
                 className="glass p-10 rounded-xl border border-white/5 flex flex-col h-full"
               >
@@ -277,9 +271,6 @@ function FeaturesSection() {
             transition={{ delay: i * 0.2 }}
             className="relative"
           >
-            {/* Hanging String Visual */}
-            <div className="absolute top-[-48px] left-1/2 -translate-x-1/2 w-px h-[48px] bg-gradient-to-b from-primary/0 to-primary/40" />
-
             <motion.div
               animate={{ rotate: [-1, 1, -1] }}
               transition={{ 
@@ -287,7 +278,7 @@ function FeaturesSection() {
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              style={{ originY: -0.1 }}
+              style={{ originY: 0 }}
               whileHover={{ y: -10, rotate: 0, scale: 1.02, boxShadow: "0 0 30px rgba(118, 185, 0, 0.2)" }}
               className={cn(
                 "glass p-12 rounded-3xl border-t-2 relative overflow-hidden h-full",

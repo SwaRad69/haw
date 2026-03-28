@@ -132,9 +132,6 @@ function ImpactSection() {
             key={i}
             className="relative"
           >
-            {/* Hanging String Visual */}
-            <div className="absolute top-[-48px] left-1/2 -translate-x-1/2 w-px h-[48px] bg-gradient-to-b from-primary/0 to-primary/40" />
-
             <motion.div
               animate={{ rotate: [-1.2, 1.2, -1.2] }}
               transition={{ 
@@ -142,7 +139,7 @@ function ImpactSection() {
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              style={{ originY: -0.1 }}
+              style={{ originY: 0 }}
               whileHover={{ rotate: 0, scale: 1.02, transition: { duration: 0.3 } }}
               className={`glass p-12 rounded-[3rem] border-b-4 ${imp.accent}/50 text-center flex flex-col items-center gap-6 h-full`}
             >
@@ -174,9 +171,6 @@ function TeamSection() {
             key={i}
             className="relative"
           >
-            {/* Hanging String Visual */}
-            <div className="absolute top-[-48px] left-1/2 -translate-x-1/2 w-px h-[48px] bg-gradient-to-b from-primary/0 to-primary/40" />
-
             <motion.div
               animate={{ rotate: [-1.5, 1.5, -1.5] }}
               transition={{ 
@@ -184,7 +178,7 @@ function TeamSection() {
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              style={{ originY: -0.1 }}
+              style={{ originY: 0 }}
               whileHover={{ scale: 1.05, rotate: 0, boxShadow: "0 0 40px rgba(117, 255, 0, 0.15)" }}
               className="glass p-8 rounded-2xl border border-white/5 group h-full"
             >
