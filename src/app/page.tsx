@@ -104,7 +104,7 @@ function ProblemSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [-25, 25, -25] }}
+              animate={{ y: [-30, 30, -30] }}
               transition={{ 
                 duration: 5 + i, 
                 repeat: Infinity, 
@@ -159,7 +159,7 @@ function WhySection() {
               className="relative"
             >
               <motion.div
-                animate={{ y: [-25, 25, -25] }}
+                animate={{ y: [-30, 30, -30] }}
                 transition={{ 
                   duration: 6 + i, 
                   repeat: Infinity, 
@@ -168,7 +168,7 @@ function WhySection() {
                 whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
                 className="glass p-10 rounded-xl border border-white/5 flex flex-col h-full"
               >
-                <h3 className="font-headline text-2xl text-white mb-4 uppercase">{item.title}</h3>
+                <h3 className="font-headline text-2xl text-primary mb-4 uppercase">{item.title}</h3>
                 <p className="text-white/50">{item.text}</p>
               </motion.div>
             </motion.div>
@@ -268,7 +268,7 @@ function FeaturesSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [-25, 25, -25] }}
+              animate={{ y: [-35, 35, -35] }}
               transition={{ 
                 duration: 7 + i, 
                 repeat: Infinity, 
@@ -280,7 +280,7 @@ function FeaturesSection() {
                 f.color
               )}
             >
-              <TypewriterText text={f.title} className="font-headline text-2xl text-white mb-4 uppercase" delay={i * 0.5} />
+              <TypewriterText text={f.title} className="font-headline text-2xl text-primary mb-4 uppercase" delay={i * 0.5} />
               <p className="text-white/60 text-lg leading-relaxed">{f.desc}</p>
             </motion.div>
           </motion.div>

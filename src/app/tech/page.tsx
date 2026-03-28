@@ -147,7 +147,7 @@ function ImpactSection() {
               whileHover={{ scale: 1.05, y: 0, transition: { duration: 0.3 } }}
               className={`glass p-12 rounded-[3rem] border-b-4 ${imp.accent}/50 text-center flex flex-col items-center gap-6 h-full`}
             >
-              <h3 className="font-headline text-2xl text-white uppercase">{imp.title}</h3>
+              <h3 className="font-headline text-2xl text-primary uppercase">{imp.title}</h3>
               <p className="text-white/60 leading-relaxed font-body">{imp.desc}</p>
             </motion.div>
           </motion.div>
@@ -166,10 +166,10 @@ function TeamSection() {
   ]
 
   return (
-    <section className="py-32 px-4 max-w-7xl mx-auto w-full">
+    <section className="py-32 px-4 max-w-7xl mx-auto w-full flex flex-col items-center">
       <h2 className="font-headline text-4xl text-white mb-20 uppercase tracking-tighter text-center">MEET THE SQUAD</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-12">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-12 w-full">
         {team.map((name, i) => (
           <motion.div
             key={i}
@@ -188,7 +188,7 @@ function TeamSection() {
               <div className="w-16 h-16 bg-primary/20 rounded-full mb-6 flex items-center justify-center text-primary group-hover:text-accent group-hover:bg-accent/20 transition-all">
                 <div className="w-10 h-10 rounded-full border-2 border-current border-dashed animate-spin-slow" />
               </div>
-              <h4 className="font-headline text-xl text-white">{name}</h4>
+              <h4 className="font-headline text-xl text-primary">{name}</h4>
             </motion.div>
           </motion.div>
         ))}
