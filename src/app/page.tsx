@@ -147,9 +147,6 @@ function WhySection() {
             text="WHY IN 2026?"
             className="font-headline text-4xl md:text-6xl text-white mb-4 tracking-tight"
           />
-          <p className="text-grey-light font-body max-w-2xl mx-auto">
-            The regulatory landscape has passed the threshold of human management. AI is no longer optional.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
