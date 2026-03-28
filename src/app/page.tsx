@@ -43,7 +43,7 @@ function HeroSection() {
           transition={{ delay: 0.8, duration: 1 }}
           className="flex flex-col items-center gap-2"
         >
-          <p className="font-headline text-primary text-lg md:text-2xl tracking-[0.2em] font-medium uppercase">
+          <p className="font-headline text-primary text-lg md:text-2xl tracking-[0.4em] font-medium uppercase">
             Team: Heapify
           </p>
           <div className="h-px w-32 bg-primary/40 my-4 shadow-[0_0_10px_#76B900]" />
@@ -106,7 +106,7 @@ function ProblemSection() {
             className="relative"
           >
             <motion.div
-              animate={{ y: [0, -10, 0] }}
+              animate={{ y: [0, -25, 0] }}
               transition={{ 
                 duration: 4, 
                 repeat: Infinity, 
