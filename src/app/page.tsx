@@ -100,7 +100,7 @@ function ProblemSection() {
             key={i}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            animate={{ y: [-40, 40, -40] }}
+            animate={{ y: [-60, 60, -60] }}
             transition={{ 
               y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 },
               opacity: { duration: 0.5, delay: i * 0.2 }
@@ -142,7 +142,7 @@ function WhySection() {
         <div className="mb-20 text-center">
           <TypewriterText 
             text="WHY IN 2026?"
-            className="font-headline text-4xl md:text-6xl text-primary mb-4 tracking-tight"
+            className="font-headline text-4xl md:text-6xl text-primary mb-4 tracking-tight uppercase"
           />
         </div>
 
@@ -152,7 +152,7 @@ function WhySection() {
               key={i}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              animate={{ y: [-40, 40, -40] }}
+              animate={{ y: [-60, 60, -60] }}
               transition={{ 
                 y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: i * 0.7 },
                 opacity: { duration: 0.5, delay: i * 0.2 }
@@ -178,27 +178,27 @@ function SolutionSection() {
     { 
       title: "PHASE 1 — DATA INGESTION & PREPARATION", 
       desc: "User uploads KYC documents and transaction data, while external sources (RBI, sanctions lists) are fetched. Data is validated, processed, and stored in the central data platform.",
-      color: "text-white"
+      color: "text-blue-400"
     },
     { 
       title: "PHASE 2 — REGULATORY INTELLIGENCE (RAG PIPELINE)", 
       desc: "RBI rules are scraped, filtered, chunked, and converted into embeddings. Both static documents and live updates are indexed for real-time retrieval.",
-      color: "text-white"
+      color: "text-purple-400"
     },
     { 
       title: "PHASE 3 — AGENTIC AI ANALYSIS", 
       desc: "Multiple AI agents process the data: Document understanding, Rule retrieval, Transaction analysis, Sanctions matching, and Time-based rule application. All insights are combined through the decision engine.",
-      color: "text-white"
+      color: "text-amber-400"
     },
     { 
       title: "PHASE 4 — EXPLAINABLE DECISION & ACTION", 
       desc: "System generates a decision (Approved / Rejected / Review) with clear reasoning, RBI clause references, and flags. Actions like alerts, reports, and notifications are triggered.",
-      color: "text-white"
+      color: "text-orange-400"
     },
     { 
       title: "PHASE 5 — CONTINUOUS COMPLIANCE LOOP (CORE)", 
       desc: "All decisions are logged and tracked. Feedback, rule updates, and model improvements continuously refine the system, ensuring it stays accurate and up-to-date.",
-      color: "text-white"
+      color: "text-primary"
     }
   ]
 
@@ -268,7 +268,7 @@ function FeaturesSection() {
             key={i}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            animate={{ y: [-45, 45, -45] }}
+            animate={{ y: [-60, 60, -60] }}
             transition={{ 
               y: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.8 },
               opacity: { duration: 0.5, delay: i * 0.2 }
